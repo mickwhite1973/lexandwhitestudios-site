@@ -1,38 +1,142 @@
-body {
+/* Reset */
+* {
     margin: 0;
-    font-family: Segoe UI, sans-serif;
-    background: #0f1115;
-    color: #ffffff;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at top, #0f1220, #05060a 70%);
+    color: #e6e6eb;
+}
+
+/* Layout */
+.page-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(120, 120, 255, 0.15);
+    color: #a9b0ff;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.hero-text {
+    color: #a0a3b1;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.hero-actions {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    text-align: center;
-}
-
-h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-p {
-    color: #9aa0a6;
-    margin-bottom: 30px;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
 }
 
 .download-btn {
-    padding: 14px 28px;
-    background: #1f6feb;
+    background: linear-gradient(135deg, #6a5cff, #8b7bff);
     color: white;
     text-decoration: none;
+    padding: 14px 26px;
     border-radius: 10px;
     font-weight: 600;
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .download-btn:hover {
-    background: #388bfd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(120, 110, 255, 0.35);
+}
+
+.price-pill {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #cfcfe6;
+}
+
+/* Small note */
+.small-note {
+    font-size: 13px;
+    color: #777a8f;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 70px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(120, 110, 255, 0.4);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #9a9db0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Pricing */
+.pricing {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing h2 {
+    margin-bottom: 12px;
+}
+
+.pricing p {
+    color: #a0a3b1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: #6f7285;
 }
