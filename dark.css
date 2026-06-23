@@ -268,4 +268,15 @@ main {
     .hero h1 {
         font-size: 44px;
     }
+
+.hero-notes {
+    margin-top: 18px;
+}
+
+.hero-notes .small-note {
+    margin: 8px auto;
+    line-height: 1.45;
+    max-width: 860px;
+}
+
 }
