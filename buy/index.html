@@ -58,6 +58,20 @@
       background: #eef8ee;
       color: #14532d;
       font-weight: bold;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .error {
+      display: none;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #fef2f2;
+      color: #7f1d1d;
+      font-weight: bold;
+      line-height: 1.5;
+      white-space: pre-wrap;
     }
 
     a {
@@ -65,8 +79,8 @@
     }
   </style>
 
-  <!-- Replace PASTE_LIVE_PAYPAL_CLIENT_ID_HERE with your LIVE PayPal Client ID. -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AdEdbsP_B63jGgoiZTqOPhP6SOPGBBASjnVH7Mkaup5ToOTAELOykWzk9yYh67dSIRsBRSCy5WKI8Mmx&currency=AUD&intent=capture"></script>
+  <!-- LIVE PayPal Client ID only. Do not use Sandbox here. -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AdEdbsP_B63jGgoiZTqOPhP6SOPGBBASjnVH7Mkaup5ToOTAELOykWzk9yYh67dSIRsBRSCy5WKI8Mmx&currency=AUD&currency=AUD&intent=capture"></script>
 </head>
 
 <body>
@@ -81,23 +95,58 @@
       <div class="price">AUD $20.00</div>
 
       <p class="note">
-        This purchase is for one Web Protect Pro licence. After payment, Lex &amp; White Studios will email your licence key to the PayPal payment email address. Please make sure your PayPal email address is correct before completing checkout.
+        This purchase is for one Web Protect Pro licence. After payment, your licence key will be emailed automatically to your PayPal payment email address.
+      </p>
+
+      <p class="note">
+        Please make sure your PayPal email address is correct before completing checkout.
       </p>
 
       <div id="paypal-button-container"></div>
 
-      <div id="payment-status" class="status">
-        Payment received. Redirecting to the thank-you page...
-      </div>
+      <div id="payment-status" class="status"></div>
+      <div id="payment-error" class="error"></div>
 
       <p class="small">
-        Licence keys are currently issued manually while automatic delivery is being completed.
+        Licence includes 3 years access for 1 device.
         For help, email <a href="mailto:support@lexandwhitestudios.com">support@lexandwhitestudios.com</a>.
       </p>
     </section>
   </main>
 
   <script>
+    const apiBaseUrl = 'https://webprotect-licensing-api-bwapffc5ajheb9f9.australiaeast-01.azurewebsites.net';
+
+    function showStatus(message) {
+      const status = document.getElementById('payment-status');
+      const error = document.getElementById('payment-error');
+
+      if (error) {
+        error.style.display = 'none';
+        error.textContent = '';
+      }
+
+      if (status) {
+        status.style.display = 'block';
+        status.textContent = message;
+      }
+    }
+
+    function showError(message) {
+      const status = document.getElementById('payment-status');
+      const error = document.getElementById('payment-error');
+
+      if (status) {
+        status.style.display = 'none';
+        status.textContent = '';
+      }
+
+      if (error) {
+        error.style.display = 'block';
+        error.textContent = message;
+      }
+    }
+
     paypal.Buttons({
       style: {
         layout: 'vertical',
@@ -106,27 +155,54 @@
         label: 'paypal'
       },
 
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            description: 'Web Protect Pro Licence',
-            amount: {
-              currency_code: 'AUD',
-              value: '20.00'
-            }
-          }]
+      createOrder: function () {
+        showStatus('Creating secure PayPal order...');
+
+        return fetch(apiBaseUrl + '/paypal/create-order', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Order could not be created. HTTP ' + response.status);
+          }
+
+          return response.json();
+        })
+        .then(function (data) {
+          if (!data || !data.id) {
+            throw new Error('PayPal order ID was not returned.');
+          }
+
+          return data.id;
         });
       },
 
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          const status = document.getElementById('payment-status');
-          if (status) {
-            status.style.display = 'block';
+      onApprove: function (data) {
+        showStatus('Payment approved. Creating your Web Protect Pro licence...');
+
+        return fetch(apiBaseUrl + '/paypal/capture-order', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderId: data.orderID
+          })
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Payment was approved, but licence creation did not complete. Please contact support@lexandwhitestudios.com with your PayPal order reference.');
           }
 
-          const orderId = encodeURIComponent(data.orderID || '');
-          window.location.href = '/thank-you/?order=' + orderId;
+          return response.json();
+        })
+        .then(function (result) {
+          const orderId = encodeURIComponent(result.orderId || data.orderID || '');
+          window.location.href = '/thank-you-auto/?order=' + orderId;
         });
       },
 
@@ -135,8 +211,8 @@
       },
 
       onError: function (err) {
-        console.error('PayPal error:', err);
-        alert('PayPal checkout could not be completed. Please try again or contact support@lexandwhitestudios.com.');
+        console.error('PayPal checkout error:', err);
+        showError('PayPal checkout could not be completed.\n\nPlease try again or contact support@lexandwhitestudios.com.');
       }
     }).render('#paypal-button-container');
   </script>
