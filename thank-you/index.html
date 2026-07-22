@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank you | Web Protect Pro</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f1ea;
+      color: #1f1a12;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    .card {
+      background: #fffdf8;
+      border: 1px solid #d9c9b4;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    .note {
+      color: #6e6254;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #eef8ee;
+      color: #14532d;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #6e6254;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: #2563eb;
+    }
+
+    .buttons {
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: #1f1a12;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Thank you for purchasing Web Protect Pro</h1>
+
+      <p class="note">
+        Your PayPal payment has been received.
+      </p>
+
+      <div class="box">
+        Your Web Protect Pro licence key will be emailed to the PayPal payment email address.
+      </div>
+
+      <p class="note">
+        Licence keys are currently issued manually while automatic licence delivery is being completed.
+        We will send your licence key as soon as possible.
+      </p>
+
+      <p class="small" id="orderText">
+        PayPal order reference: checking...
+      </p>
+
+      <p class="small">
+        Need help? Email
+        <a href="mailto:support@lexandwhitestudios.com">support@lexandwhitestudios.com</a>.
+      </p>
+
+      <div class="buttons">
+        <a class="button" href="/">Return to Lex &amp; White Studios</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const order = params.get('order');
+
+    const orderText = document.getElementById('orderText');
+
+    if (order && orderText) {
+      orderText.textContent = 'PayPal order reference: ' + order;
+    } else if (orderText) {
+      orderText.textContent = 'PayPal order reference: not available';
+    }
+  </script>
+</body>
+</html>
