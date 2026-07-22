@@ -2,23 +2,26 @@
 <html lang="en-AU">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Web Protect Pro - PayPal Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayPal V2 Test | Web Protect Pro</title>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
       background: #f6f1ea;
       color: #1f1a12;
-      margin: 0;
-      padding: 32px;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 20px;
     }
 
     .card {
-      max-width: 720px;
-      margin: 0 auto;
       background: #fffdf8;
-      border: 1px solid #d6c2a8;
+      border: 1px solid #d9c9b4;
       border-radius: 18px;
       padding: 28px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -26,116 +29,207 @@
 
     h1 {
       margin-top: 0;
+      font-size: 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ede9fe;
+      color: #4c1d95;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 16px;
     }
 
     .price {
       font-size: 24px;
       font-weight: bold;
-      margin: 18px 0;
-    }
-
-    .note {
-      background: #fff7d6;
-      border: 1px solid #e8c85e;
-      border-radius: 12px;
-      padding: 12px;
       margin: 16px 0;
     }
 
-    #paypal-button-container {
-      margin-top: 22px;
+    .note {
+      color: #6e6254;
+      line-height: 1.5;
     }
 
-    #status {
+    .small {
+      font-size: 13px;
+      color: #6e6254;
       margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .status {
+      display: none;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #eef8ee;
+      color: #14532d;
       font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .error {
+      display: none;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #fef2f2;
+      color: #7f1d1d;
+      font-weight: bold;
+      line-height: 1.5;
+      white-space: pre-wrap;
     }
 
     a {
-      color: #1d4ed8;
+      color: #2563eb;
     }
   </style>
+
+  <!-- SANDBOX ONLY: replace this with the Web Protect Pro Sandbox Client ID, not Live. -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AWbu5RsRfOOzVGAm2zcirFhZzPHZ4LPP3yZysZy3RY8hYYqj3sHGjwFI4QbBS3cwsp4jRWYetvbsd9Qs&currency=AUD&intent=capture"></script>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Web Protect Pro</h1>
+  <main class="wrap">
+    <section class="card">
+      <div class="badge">Sandbox V2 automation test</div>
 
-    <p>This is a PayPal sandbox test checkout page for Web Protect Pro.</p>
+      <h1>Buy Web Protect Pro</h1>
 
-    <div class="price">Test price: AUD $20.00</div>
+      <p class="note">
+        This is the hidden PayPal V2 test page for Web Protect Pro licence automation.
+      </p>
 
-    <div class="note">
-      Test only. No live licence key will be created from this page yet.
-    </div>
+      <div class="price">AUD $20.00</div>
 
-    <div id="paypal-button-container"></div>
+      <p class="note">
+        Test flow: PayPal sandbox checkout → Azure capture → SQL licence creation → customer licence email → admin email.
+      </p>
 
-    <div id="status"></div>
+      <div id="paypal-button-container"></div>
 
-    <p style="margin-top: 28px;">
-      <a href="/">Return to Lex &amp; White Studios</a>
-    </p>
-  </div>
+      <div id="payment-status" class="status"></div>
+      <div id="payment-error" class="error"></div>
 
-  <!--
-    Replace YOUR_SANDBOX_CLIENT_ID below with the PayPal sandbox client ID.
-    Do NOT paste the PayPal client secret here.
-  -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AWbu5RsRfOOzVGAm2zcirFhZzPHZ4LPP3yZysZy3RY8hYYqj3sHGjwFI4QbBS3cwsp4jRWYetvbsd9Qs&currency=AUD&intent=capture"></script>
+      <p class="small">
+        Sandbox testing only. Do not use a real PayPal buyer account on this page.
+      </p>
+    </section>
+  </main>
 
   <script>
-    const statusBox = document.getElementById("status");
+    const apiBaseUrl = 'https://webprotect-licensing-api-bwapffc5ajheb9f9.australiaeast-01.azurewebsites.net';
+
+    function showStatus(message) {
+      const status = document.getElementById('payment-status');
+      const error = document.getElementById('payment-error');
+
+      if (error) {
+        error.style.display = 'none';
+        error.textContent = '';
+      }
+
+      if (status) {
+        status.style.display = 'block';
+        status.textContent = message;
+      }
+    }
+
+    function showError(message) {
+      const status = document.getElementById('payment-status');
+      const error = document.getElementById('payment-error');
+
+      if (status) {
+        status.style.display = 'none';
+        status.textContent = '';
+      }
+
+      if (error) {
+        error.style.display = 'block';
+        error.textContent = message;
+      }
+    }
 
     paypal.Buttons({
       style: {
-        layout: "vertical",
-        color: "gold",
-        shape: "rect",
-        label: "paypal"
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'paypal'
       },
 
-      createOrder: function(data, actions) {
-        statusBox.textContent = "Creating test order...";
+      createOrder: function () {
+        showStatus('Creating PayPal sandbox order...');
 
-        return actions.order.create({
-          purchase_units: [{
-            description: "Web Protect Pro - 3 Year Licence Test",
-            amount: {
-              currency_code: "AUD",
-              value: "20.00"
-            }
-          }]
+        return fetch(apiBaseUrl + '/paypal/create-order', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Azure create-order failed. HTTP ' + response.status);
+          }
+
+          return response.json();
+        })
+        .then(function (data) {
+          if (!data || !data.id) {
+            throw new Error('Azure create-order did not return a PayPal order ID.');
+          }
+
+          showStatus('PayPal order created: ' + data.id);
+          return data.id;
         });
       },
 
-      onApprove: function(data, actions) {
-        statusBox.textContent = "Capturing test payment...";
+      onApprove: function (data) {
+        showStatus('Payment approved in sandbox. Capturing order and creating licence...');
 
-        return actions.order.capture().then(function(details) {
-          const payerName =
-            details &&
-            details.payer &&
-            details.payer.name &&
-            details.payer.name.given_name
-              ? details.payer.name.given_name
-              : "customer";
+        return fetch(apiBaseUrl + '/paypal/capture-order', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderId: data.orderID
+          })
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Azure capture-order failed. HTTP ' + response.status);
+          }
 
-          statusBox.textContent =
-            "Sandbox payment complete. Thanks, " + payerName +
-            ". Licence generation will be connected later.";
+          return response.json();
+        })
+        .then(function (result) {
+          showStatus(
+            'Success. Licence automation completed.\n' +
+            'Order: ' + (result.orderId || data.orderID) + '\n' +
+            'Customer email started: ' + result.emailStarted + '\n' +
+            'Admin email started: ' + result.adminEmailStarted
+          );
+
+          const orderId = encodeURIComponent(result.orderId || data.orderID || '');
+          window.location.href = '/thank-you/?order=' + orderId;
         });
       },
 
-      onCancel: function() {
-        statusBox.textContent = "Test payment cancelled.";
+      onCancel: function () {
+        showStatus('Sandbox checkout cancelled.');
       },
 
-      onError: function(err) {
-        console.error(err);
-        statusBox.textContent = "PayPal test error. Check the sandbox client ID and browser console.";
+      onError: function (err) {
+        console.error('PayPal V2 sandbox error:', err);
+        showError('PayPal V2 sandbox test failed:\n' + err.message);
       }
-    }).render("#paypal-button-container");
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
