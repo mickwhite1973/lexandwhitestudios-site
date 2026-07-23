@@ -88,13 +88,15 @@ main {
     line-height: 1.65;
 }
 
-.hero-actions {
+/* Hero buttons */
+.hero-actions,
+.purchase-buttons {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
 }
 
 .download-btn {
@@ -108,6 +110,7 @@ main {
     color: #ffffff;
     text-decoration: none;
     font-weight: 800;
+    border: 1px solid rgba(255,255,255,0.10);
     box-shadow: 0 12px 34px rgba(112, 76, 255, 0.32);
     transition: 0.2s ease;
 }
@@ -117,21 +120,52 @@ main {
     box-shadow: 0 16px 44px rgba(112, 76, 255, 0.42);
 }
 
-.price-pill {
-    min-height: 50px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 22px;
-    border-radius: 14px;
+/* PayPal purchase button */
+.paypal-btn {
+    background: #ffc439;
+    color: #111111;
+    border-color: #ffc439;
+    box-shadow: 0 12px 34px rgba(255, 196, 57, 0.22);
+}
+
+.paypal-btn:hover {
+    background: #f2b600;
+    color: #111111;
+    border-color: #f2b600;
+    box-shadow: 0 16px 44px rgba(255, 196, 57, 0.32);
+}
+
+/* Download button */
+.download-btn.secondary {
     background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.10);
     color: #ffffff;
-    font-weight: 800;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: none;
+}
+
+.download-btn.secondary:hover {
+    background: rgba(255,255,255,0.12);
+    box-shadow: none;
+}
+
+/* Notes */
+.hero-notes {
+    margin-top: 18px;
+}
+
+.hero-notes .small-note {
+    margin: 8px auto;
+    line-height: 1.45;
+    max-width: 860px;
 }
 
 .small-note {
     color: #8f96ad;
     font-size: 14px;
+}
+
+.small-note a {
+    color: #bda8ff;
 }
 
 /* Feature cards */
@@ -206,17 +240,17 @@ main {
     margin-bottom: 18px;
 }
 
-.footer-links button {
+.footer-links a {
     border: 1px solid rgba(255,255,255,0.14);
     background: rgba(255,255,255,0.06);
     color: #ffffff;
     border-radius: 12px;
     padding: 10px 16px;
-    cursor: pointer;
+    text-decoration: none;
     font-weight: 700;
 }
 
-.footer-links button:hover {
+.footer-links a:hover {
     background: rgba(255,255,255,0.10);
 }
 
@@ -256,6 +290,11 @@ main {
         gap: 12px;
     }
 
+    .site-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     main {
         width: min(100% - 32px, 1120px);
         padding-top: 48px;
@@ -269,14 +308,8 @@ main {
         font-size: 44px;
     }
 
-.hero-notes {
-    margin-top: 18px;
-}
-
-.hero-notes .small-note {
-    margin: 8px auto;
-    line-height: 1.45;
-    max-width: 860px;
-}
-
+    .download-btn {
+        width: 100%;
+        max-width: 340px;
+    }
 }
