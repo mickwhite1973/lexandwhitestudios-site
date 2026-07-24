@@ -1,6 +1,7 @@
 /download /download/windows/latest 302
 /download/windows /download/windows/latest 302
-/download/windows/latest https://download.lexandwhitestudios.com/windows/v1.0.17.0/WebStudio.Package_1.0.17.0_x64.msix 302
+/download/windows/latest https://download.lexandwhitestudios.com/windows/v1.0.18.0/WebStudio.Package_1.0.18.0_x64.msix 302
+/download/windows/v1.0.18.0 https://download.lexandwhitestudios.com/windows/v1.0.18.0/WebStudio.Package_1.0.18.0_x64.msix 302
 /download/windows/v1.0.17.0 https://download.lexandwhitestudios.com/windows/v1.0.17.0/WebStudio.Package_1.0.17.0_x64.msix 302
 /download/windows/v1.0.15.0 https://download.lexandwhitestudios.com/windows/v1.0.15.0/WebStudio.Package_1.0.15.0_x64.msix 302
 /download/windows/v1.0.14.0 https://download.lexandwhitestudios.com/windows/v1.0.14.0/WebStudio.Package_1.0.14.0_x64.msix 302
