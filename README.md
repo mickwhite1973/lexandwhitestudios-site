@@ -1,2 +1,2 @@
 # lexandwhitestudios-site
-Lex &amp; White Studios website for Web Protect Pro
+Lex &amp; White Studios website for Web Privacy Pro
