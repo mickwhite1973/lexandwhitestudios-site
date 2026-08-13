@@ -223,6 +223,65 @@ main {
     margin-top: 8px;
 }
 
+/* Suspension Setup Guide product */
+.rider-product-card {
+    max-width: 900px;
+    margin: 0 auto 64px;
+    padding: 42px;
+    text-align: center;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at top, rgba(73, 137, 255, 0.16), transparent 48%),
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.035));
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+}
+
+.rider-product-card h2 {
+    font-size: 34px;
+    margin-bottom: 16px;
+}
+
+.rider-badge {
+    background: rgba(61, 129, 255, 0.18);
+    color: #b9d5ff;
+}
+
+.rider-product-text {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #b8bfd4;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.rider-product-points {
+    max-width: 720px;
+    margin: 28px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    text-align: left;
+    color: #c8cede;
+    font-size: 14px;
+}
+
+.rider-product-points span {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.rider-actions {
+    margin-top: 30px;
+    margin-bottom: 18px;
+}
+
+.rider-version {
+    margin-top: 10px;
+}
+
 /* Footer */
 .site-footer {
     width: min(1120px, calc(100% - 48px));
@@ -289,6 +348,42 @@ main {
         flex-direction: column;
         gap: 12px;
     }
+
+    .rider-product-card {
+        padding: 30px 22px;
+    }
+
+    .rider-product-card h2 {
+        font-size: 28px;
+    }
+
+    .rider-product-points {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        width: min(100% - 32px, 1120px);
+        padding-top: 48px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .download-btn {
+        width: 100%;
+        max-width: 340px;
+    }
+}
 
     .site-header nav {
         flex-wrap: wrap;
