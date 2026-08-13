@@ -1,0 +1,23 @@
+{
+  "name": "Suspension Setup Guide",
+  "short_name": "Suspension Guide",
+  "description": "Local motorcycle suspension setup guide with Search My Garage & App across saved bikes, settings, Test History and built-in help.",
+  "id": "./",
+  "start_url": "./#settings",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8f9fa",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

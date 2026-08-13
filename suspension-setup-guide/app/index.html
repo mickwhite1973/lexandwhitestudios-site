@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="A beginner-friendly suspension setup guide for learning adjusters, measuring SAG and recording changes.">
+  <title>Suspension Setup Guide</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <button class="brand-button" type="button" data-open-page="settings" aria-label="Open Suspension Setup Guide settings">
+        <img src="assets/icon.svg" alt="" width="36" height="36">
+        <span>
+          <strong>Suspension Setup Guide</strong>
+          <small>Version 1.4</small>
+        </span>
+      </button>
+      <div class="header-actions">
+        <button class="unit-shortcut" type="button" data-open-page="units" aria-label="Open measurement units">
+          <span id="unitShortcut">mm · kg</span>
+        </button>
+        <button class="header-home" type="button" data-open-page="settings" aria-label="Return to main settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.7 12 3l9 7.7v9.1a1.2 1.2 0 0 1-1.2 1.2h-5.1v-6.2H9.3V21H4.2A1.2 1.2 0 0 1 3 19.8Z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-frame">
+      <section id="settings" class="page active-page" data-page-title="Settings">
+        <div class="page-intro settings-intro">
+          <p class="kicker">Suspension made understandable</p>
+          <h1>What would you like to do?</h1>
+          <p>Open one section, complete the job, then return here for the next step.</p>
+        </div>
+
+        <label class="search-box garage-main-search" for="settingsSearch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.5-4.5m2-5A7 7 0 1 1 4.5 11a7 7 0 0 1 14 0Z"/></svg>
+          <input id="settingsSearch" type="search" placeholder="Search My Garage &amp; app — try Spyder rebound, potholes, plush" autocomplete="off">
+        </label>
+
+        <div id="localSearchIntro" class="local-search-intro">
+          <strong>Search stays on this device</strong>
+          <span>Find your own bikes, current suspension settings, Test History and the app’s built-in guidance. No internet results are mixed into your setup.</span>
+        </div>
+
+        <section id="localSearchResults" class="local-search-results hidden" aria-live="polite">
+          <div class="local-search-heading">
+            <div>
+              <p class="kicker">Local results</p>
+              <h2 id="localSearchTitle">Search My Garage &amp; App</h2>
+            </div>
+            <button type="button" class="text-button" id="clearLocalSearch">Clear search</button>
+          </div>
+
+          <div id="garageResultSection" class="local-result-section">
+            <h3>My Garage</h3>
+            <div id="garageResultList" class="local-result-list"></div>
+          </div>
+
+          <div id="appResultSection" class="local-result-section">
+            <h3>App help &amp; tools</h3>
+            <div id="appResultList" class="local-result-list"></div>
+          </div>
+
+          <div id="localSearchNoResults" class="empty-state hidden">
+            <strong>No local matches.</strong>
+            <p>Try a bike name, shock brand, SAG value, preload, compression, rebound, potholes, kick, plush or another note you have saved.</p>
+          </div>
+        </section>
+
+        <div class="safety-strip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+          <div>
+            <strong>Before changing a setting</strong>
+            <span>Record the starting position, make one small change and never force an adjuster.</span>
+          </div>
+        </div>
+
+        <section class="settings-group searchable-group" aria-labelledby="startHeading">
+          <h2 id="startHeading">Start here</h2>
+          <div class="settings-card">
+            <button class="settings-row featured-row" type="button" data-open-page="complete" data-search="complete vehicle setup one bike front rear sag preload compression rebound all settings">
+              <span class="row-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5Z"/><path d="M8 8h8M8 12h8M8 16h5"/><circle cx="18" cy="17" r="3"/><path d="m16.8 17 1 1 1.8-2"/></svg></span>
+              <span class="row-copy"><strong>Complete vehicle setup</strong><small>Keep front and rear SAG, preload, compression and rebound together under one bike.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="guided" data-search="guided sag setup wizard vehicle load baseline step by step">
+              <span class="row-icon green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5Z"/><path d="M15 4v5h4M8 13h8M8 17h5"/><path d="m8 9 1.2 1.2L12 7.5"/></svg></span>
+              <span class="row-copy"><strong>Guided SAG setup</strong><small>Measure and correct SAG, then update the selected vehicle’s current setup.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="vehicles" data-search="my vehicles profile motorcycle spyder trike dirt bike make model year shock fork">
+              <span class="row-icon green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h14l-1.4-5.2A2.4 2.4 0 0 0 15.3 9H8.7a2.4 2.4 0 0 0-2.3 1.8Z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 9V6h6v3"/></svg></span>
+              <span class="row-copy"><strong>My vehicles</strong><small>Save the bike, trike or specialty suspension and its available adjusters.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="adjusters" data-search="identify adjusters shock fork preload compression rebound clickers">
+              <span class="row-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v3l2.2 1.3 2.6-1.5 3 5.2-2.6 1.5v2.6l2.6 1.5-3 5.2-2.6-1.5L15 21v3H9v-3l-2.2-1.3-2.6 1.5-3-5.2 2.6-1.5v-2.6L1.2 11l3-5.2 2.6 1.5L9 6Z"/><circle cx="12" cy="13.8" r="3.2"/></svg></span>
+              <span class="row-copy"><strong>Identify an adjuster</strong><small>Learn the proper names and what each control changes.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="sag" data-search="measure calculate sag l1 l2 l3 ride height preload">
+              <span class="row-icon green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18m12-18v18M4 7h4M4 12h4M4 17h4m8-10h4m-4 5h4m-4 5h4"/></svg></span>
+              <span class="row-copy"><strong>Measure SAG</strong><small>Calculate SAG, understand what the percentage means and compare riding-style targets.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="damping" data-search="fine tune damping compression rebound clickers harsh kick bounce bottom pack down test ride">
+              <span class="row-icon orange"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M12 4v16M19 4v16"/><path d="M2 8h6M9 15h6M16 10h6"/><circle cx="5" cy="8" r="2"/><circle cx="12" cy="15" r="2"/><circle cx="19" cy="10" r="2"/></svg></span>
+              <span class="row-copy"><strong>Fine-tune compression &amp; rebound</strong><small>Learn each adjuster, choose the ride goal, record before-and-after settings and recalculate the result.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="records" data-search="record save setup rider passenger luggage clicks notes test ride">
+              <span class="row-icon purple"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a2 2 0 0 1 2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>
+              <span class="row-copy"><strong>Test history</strong><small>Review changes and road tests without creating duplicate vehicle profiles.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-group searchable-group" aria-labelledby="learnHeading">
+          <h2 id="learnHeading">Learn and reference</h2>
+          <div class="settings-card">
+            <button class="settings-row" type="button" data-open-page="visual" data-search="visual poster diagram shock fork rider symptom full guide">
+              <span class="row-icon orange"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 16 3.5-4 3 3 2.5-3 3 4M8 9h.01"/></svg></span>
+              <span class="row-copy"><strong>Full visual guide</strong><small>Rear shocks, front forks, SAG measurements and rider symptoms.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="symptoms" data-search="symptom harsh kick bounce pogo pack down bottom out uncomfortable troubleshoot">
+              <span class="row-icon red"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.8 20h18.4Z"/><path d="M12 9v5m0 3h.01"/></svg></span>
+              <span class="row-copy"><strong>What am I feeling?</strong><small>Match harshness, kicking or bouncing to the first setting to check.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="method" data-search="safe method workflow measure adjust test record golden rules">
+              <span class="row-icon grey"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8m-7 0v3h6V4m-9 3h12a2 2 0 0 1 2 2v12H4V9a2 2 0 0 1 2-2Z"/><path d="m8 13 2 2 5-5m-7 8h8"/></svg></span>
+              <span class="row-copy"><strong>Safe adjustment method</strong><small>Measure, change one setting, test consistently and record.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="settings-group searchable-group" aria-labelledby="appHeading">
+          <h2 id="appHeading">App</h2>
+          <div class="settings-card">
+            <button class="settings-row" type="button" data-open-page="units" data-search="units metric imperial millimetres kilograms inches pounds mm kg lb convert">
+              <span class="row-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4Z"/><path d="M7 6v4m3-4v2m3-2v4m3-4v2m3-2v4"/></svg></span>
+              <span class="row-copy"><strong>Measurement units</strong><small id="unitSettingSummary">Metric · millimetres and kilograms</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="settings-row" type="button" data-open-page="about" data-search="about privacy local records offline app version">
+              <span class="row-icon grey"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></svg></span>
+              <span class="row-copy"><strong>About and data</strong><small>How records are stored and what this prototype can do.</small></span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+        </section>
+
+        <p id="searchEmpty" class="empty-search hidden" aria-hidden="true"></p>
+      </section>
+
+
+      <section id="complete" class="page" data-page-title="Complete vehicle setup">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">One bike, one setup</p><h1>Complete vehicle setup</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Choose one saved vehicle. Its front and rear SAG, preload, compression and rebound are stored together in the same vehicle profile.</p>
+
+        <div class="safety-strip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+          <div><strong>Current best setup</strong><span>Save the settings currently fitted and working best. Test history remains separate so you can review changes.</span></div>
+        </div>
+
+        <section class="form-section complete-vehicle-picker">
+          <div class="field-grid">
+            <label>Saved vehicle<select id="completeVehicleSelect"><option value="">Choose a saved vehicle</option></select></label>
+            <label>Setup name<input id="completeSetupName" type="text" placeholder="Current road comfort setup"></label>
+          </div>
+          <div id="completeVehicleSummary" class="selection-summary">Create or choose a vehicle before saving its complete setup.</div>
+          <div class="inline-actions"><button type="button" class="text-button" data-open-page="vehicles">Create or edit vehicles</button></div>
+        </section>
+
+        <form id="completeSetupForm" class="clean-form">
+          <section class="complete-area" data-complete-area="rear">
+            <div class="complete-area-heading"><div><p class="kicker">Rear suspension</p><h2>Rear shock — SAG, preload and damping</h2></div><span class="profile-chip">Saved with this bike</span></div>
+            <div class="complete-area-grid">
+              <section class="form-section">
+                <h3>Rear SAG and preload</h3>
+                <div class="field-grid">
+                  <label>Riding style<select id="completeRearStyle"><option value="street">Street / normal riding</option><option value="comfort">Plush / maximum comfort</option><option value="sport">Sport road / firm</option><option value="track">Race track / road race</option><option value="adventure">Adventure / mixed terrain</option><option value="offroad">Off-road / MX</option></select></label>
+                  <label><span id="completeRearTravelLabel">Rear WHEEL travel (mm)</span><input id="completeRearTravel" type="number" min="0.01" step="0.1"></label>
+                </div>
+                <div class="measurement-explainer compact">
+                  <strong>Use rear wheel travel — not shock stroke</strong>
+                  <span>An angled or linked rear shock can move a different amount from the wheel. Use the manufacturer’s rear wheel-travel specification.</span>
+                </div>
+                <div class="measurement-explainer compact">
+                  <strong>Measure the wheel, not the angle</strong>
+                  <span>Use the same fixed chassis-to-wheel/hub points for L1, L2 and L3. The physical measurement already includes shock angle and linkage leverage.</span>
+                </div>
+                <div class="field-grid three">
+                  <label><span id="completeRearL1Label">L1 fully extended (mm)</span><input id="completeRearL1" type="number" min="0" step="0.1"></label>
+                  <label><span id="completeRearL2Label">L2 vehicle only (mm)</span><input id="completeRearL2" type="number" min="0" step="0.1"></label>
+                  <label><span id="completeRearL3Label">L3 riding load (mm)</span><input id="completeRearL3" type="number" min="0" step="0.1"></label>
+                </div>
+                <div class="sag-fix-cheat">
+                  <div>
+                    <span class="sag-fix-symbol">+</span>
+                    <p><strong>Too much SAG — percentage above target</strong><small>The suspension sits too low. Add preload with the main collar, hydraulic hand wheel or electronic load setting. Leave compression and rebound unchanged.</small></p>
+                  </div>
+                  <div>
+                    <span class="sag-fix-symbol">−</span>
+                    <p><strong>Too little SAG — percentage below target</strong><small>The suspension sits too high. Remove preload with the main preload adjuster. Leave compression and rebound unchanged.</small></p>
+                  </div>
+                  <div>
+                    <span class="sag-fix-symbol">✓</span>
+                    <p><strong>SAG inside target</strong><small>Keep the preload position. Fine-tune compression and rebound only for ride behaviour.</small></p>
+                  </div>
+                </div>
+                <button type="button" class="text-button complete-calculate" data-complete-calculate="rear">Calculate rear SAG &amp; correction</button>
+                <div id="completeRearSagResult" class="complete-sag-result">Enter travel and L1, L2 and L3 to calculate the current rear SAG.</div>
+                <div id="completeRearSagHelp" class="complete-inline-help">The personalised preload correction will appear here.</div>
+                <label>Rear preload setting<input id="completeRearPreload" type="text" placeholder="Example: 11 turns, position 4 or 8 mm"></label>
+              </section>
+              <section class="form-section">
+                <h3>Rear damping</h3>
+                <label>How settings are recorded<select id="completeRearConvention"><option value="clicks-out">Clicks out from gently closed</option><option value="turns-out">Turns out from gently closed</option><option value="marked-scale">Numbered or marked dial</option><option value="unknown">Copy visible markings</option></select></label>
+                <label><strong>Compression — top small adjuster</strong><small>Top of shock body or reservoir; usually marked COMP or C.</small><input id="completeRearCompression" type="text" placeholder="Example: 14 clicks out"></label>
+                <label><strong>Rebound — lower small adjuster</strong><small>Bottom of shock near lower eye; usually marked REB or R.</small><input id="completeRearRebound" type="text" placeholder="Example: 12 clicks out"></label>
+                <div class="field-grid"><label>Low-speed compression<input id="completeRearLsc" type="text" placeholder="Optional"></label><label>High-speed compression<input id="completeRearHsc" type="text" placeholder="Optional"></label></div>
+                <section class="complete-damping-guide">
+                  <div class="complete-guide-heading">
+                    <div><p class="kicker">Rear ride check</p><h4>What does the bike do?</h4></div>
+                    <span class="profile-chip">One clicker at a time</span>
+                  </div>
+
+                  <label>Choose the clearest symptom
+                    <select id="completeRearSymptom">
+                      <option value="">Choose a symptom</option>
+                      <option value="compression-harsh">Harsh as a pothole or bump is hit</option>
+                      <option value="compression-soft">Dives, wallows or bottoms in a dip</option>
+                      <option value="rebound-fast">Kicks or bounces after the bump</option>
+                      <option value="rebound-slow">Packs down over repeated bumps</option>
+                      <option value="hsc-harsh">Harsh on a sharp pothole, rock or square edge</option>
+                      <option value="hsc-soft">Bottoms on a sharp impact or landing</option>
+                      <option value="lsc-soft">Too much squat, dive or wallow under smooth load</option>
+                      <option value="lsc-harsh">Too firm during braking, acceleration or cornering</option>
+                    </select>
+                  </label>
+
+                  <label>Initial symptom score
+                    <select id="completeRearSymptomScore">
+                      <option value="">Choose 0–5</option>
+                      <option value="0">0 — not present</option>
+                      <option value="1">1 — very slight</option>
+                      <option value="2">2 — mild</option>
+                      <option value="3">3 — clear</option>
+                      <option value="4">4 — strong</option>
+                      <option value="5">5 — severe / stop testing</option>
+                    </select>
+                  </label>
+
+                  <div class="form-buttons">
+                    <button type="button" class="text-button" data-complete-damping-advice="rear">Show rear fine-tune advice</button>
+                    <button type="button" class="text-button" data-open-complete-tune="rear">Open full rear before/after test</button>
+                  </div>
+                  <div id="completeRearDampingHelp" class="complete-inline-help">Choose a symptom to identify the correct rear clicker, direction and one-step test.</div>
+                </section>
+
+                <label>Rear notes<textarea id="completeRearNotes" rows="3" placeholder="Passenger load, luggage, tyre pressure or ride notes."></textarea></label>
+              </section>
+            </div>
+          </section>
+
+          <section class="complete-area" data-complete-area="front">
+            <div class="complete-area-heading"><div><p class="kicker">Front suspension</p><h2>Front forks — SAG, preload and damping</h2></div><span class="profile-chip">Same bike profile</span></div>
+            <div class="complete-area-grid">
+              <section class="form-section">
+                <h3>Front SAG and preload</h3>
+                <div class="field-grid">
+                  <label>Riding style<select id="completeFrontStyle"><option value="street">Street / normal riding</option><option value="comfort">Plush / maximum comfort</option><option value="sport">Sport road / firm</option><option value="track">Race track / road race</option><option value="adventure">Adventure / mixed terrain</option><option value="offroad">Off-road / MX</option></select></label>
+                  <label><span id="completeFrontTravelLabel">Front WHEEL travel (mm)</span><input id="completeFrontTravel" type="number" min="0.01" step="0.1"></label>
+                </div>
+                <div class="measurement-explainer compact">
+                  <strong>Use front wheel travel — not shock stroke</strong>
+                  <span>On A-arm, linkage or angled-shock systems, wheel movement and shock-shaft movement are not the same thing.</span>
+                </div>
+                <div class="measurement-explainer compact">
+                  <strong>No angle calculation is needed when measuring at the wheel</strong>
+                  <span>Use matching chassis-to-wheel/hub reference points for L1, L2 and L3. The measured movement already includes the front suspension geometry.</span>
+                </div>
+                <div class="field-grid three">
+                  <label><span id="completeFrontL1Label">L1 fully extended (mm)</span><input id="completeFrontL1" type="number" min="0" step="0.1"></label>
+                  <label><span id="completeFrontL2Label">L2 vehicle only (mm)</span><input id="completeFrontL2" type="number" min="0" step="0.1"></label>
+                  <label><span id="completeFrontL3Label">L3 riding load (mm)</span><input id="completeFrontL3" type="number" min="0" step="0.1"></label>
+                </div>
+                <div class="sag-fix-cheat">
+                  <div>
+                    <span class="sag-fix-symbol">+</span>
+                    <p><strong>Too much SAG — percentage above target</strong><small>The forks sit too low. Add preload with the fork preload nut or collar. Do not alter compression or rebound to correct SAG.</small></p>
+                  </div>
+                  <div>
+                    <span class="sag-fix-symbol">−</span>
+                    <p><strong>Too little SAG — percentage below target</strong><small>The forks sit too high. Remove preload with the fork preload nut or collar. Do not alter damping clickers.</small></p>
+                  </div>
+                  <div>
+                    <span class="sag-fix-symbol">✓</span>
+                    <p><strong>SAG inside target</strong><small>Keep preload. Fine-tune damping only for dive, harshness, kick, bounce or recovery.</small></p>
+                  </div>
+                </div>
+                <button type="button" class="text-button complete-calculate" data-complete-calculate="front">Calculate front SAG &amp; correction</button>
+                <div id="completeFrontSagResult" class="complete-sag-result">Enter travel and L1, L2 and L3 to calculate the current front SAG.</div>
+                <div id="completeFrontSagHelp" class="complete-inline-help">The personalised preload correction will appear here.</div>
+                <label>Front preload / top nut setting<input id="completeFrontPreload" type="text" placeholder="Example: 5 turns or line 3"></label>
+              </section>
+              <section class="form-section">
+                <h3>Front damping</h3>
+                <label>How settings are recorded<select id="completeFrontConvention"><option value="clicks-out">Clicks out from gently closed</option><option value="turns-out">Turns out from gently closed</option><option value="marked-scale">Numbered or marked dial</option><option value="unknown">Copy visible markings</option></select></label>
+                <label><strong>Compression — adjuster marked COMP or C</strong><small>Fork location varies: use the actual COMP/C marking.</small><input id="completeFrontCompression" type="text" placeholder="Example: 10 clicks out"></label>
+                <label><strong>Rebound — adjuster marked REB or R</strong><small>Fork location varies: use the actual REB/R marking.</small><input id="completeFrontRebound" type="text" placeholder="Example: 12 clicks out"></label>
+                <section class="twin-front-check">
+                  <div class="complete-guide-heading">
+                    <div>
+                      <p class="kicker">Optional — Spyder / trike / twin-front-wheel</p>
+                      <h4>Compare left and right front SAG</h4>
+                    </div>
+                    <span class="profile-chip">Same vehicle</span>
+                  </div>
+
+                  <p class="fine-print">Use this only when the vehicle has separate left and right front suspension units. Measure each side from matching chassis-to-wheel/hub reference points with the same loading condition.</p>
+
+                  <div class="twin-front-grid">
+                    <section>
+                      <h5>Left front</h5>
+                      <div class="field-grid three">
+                        <label><span id="completeFrontLeftL1Label">L1 (mm)</span><input id="completeFrontLeftL1" type="number" min="0" step="0.1"></label>
+                        <label><span id="completeFrontLeftL2Label">L2 (mm)</span><input id="completeFrontLeftL2" type="number" min="0" step="0.1"></label>
+                        <label><span id="completeFrontLeftL3Label">L3 (mm)</span><input id="completeFrontLeftL3" type="number" min="0" step="0.1"></label>
+                      </div>
+                    </section>
+
+                    <section>
+                      <h5>Right front</h5>
+                      <div class="field-grid three">
+                        <label><span id="completeFrontRightL1Label">L1 (mm)</span><input id="completeFrontRightL1" type="number" min="0" step="0.1"></label>
+                        <label><span id="completeFrontRightL2Label">L2 (mm)</span><input id="completeFrontRightL2" type="number" min="0" step="0.1"></label>
+                        <label><span id="completeFrontRightL3Label">L3 (mm)</span><input id="completeFrontRightL3" type="number" min="0" step="0.1"></label>
+                      </div>
+                    </section>
+                  </div>
+
+                  <div class="form-buttons">
+                    <button type="button" class="text-button" id="compareTwinFrontSag">Compare left &amp; right front SAG</button>
+                    <button type="button" class="text-button" id="clearTwinFrontSag">Clear left/right check</button>
+                  </div>
+
+                  <div id="twinFrontSagResult" class="complete-inline-help">Optional consistency check. It does not replace the normal front SAG setup.</div>
+                </section>
+
+                <section class="complete-damping-guide">
+                  <div class="complete-guide-heading">
+                    <div><p class="kicker">Front ride check</p><h4>What do the forks do?</h4></div>
+                    <span class="profile-chip">Use COMP/C or REB/R</span>
+                  </div>
+
+                  <label>Choose the clearest symptom
+                    <select id="completeFrontSymptom">
+                      <option value="">Choose a symptom</option>
+                      <option value="compression-harsh">Harsh as a pothole or bump is hit</option>
+                      <option value="compression-soft">Dives or uses too much travel under braking</option>
+                      <option value="rebound-fast">Front rises or bounces back too quickly</option>
+                      <option value="rebound-slow">Forks pack down over repeated bumps</option>
+                    </select>
+                  </label>
+
+                  <label>Initial symptom score
+                    <select id="completeFrontSymptomScore">
+                      <option value="">Choose 0–5</option>
+                      <option value="0">0 — not present</option>
+                      <option value="1">1 — very slight</option>
+                      <option value="2">2 — mild</option>
+                      <option value="3">3 — clear</option>
+                      <option value="4">4 — strong</option>
+                      <option value="5">5 — severe / stop testing</option>
+                    </select>
+                  </label>
+
+                  <div class="form-buttons">
+                    <button type="button" class="text-button" data-complete-damping-advice="front">Show front fine-tune advice</button>
+                    <button type="button" class="text-button" data-open-complete-tune="front">Open full front before/after test</button>
+                  </div>
+                  <div id="completeFrontDampingHelp" class="complete-inline-help">Choose a symptom to identify the COMP/C or REB/R adjuster and one-step test.</div>
+                </section>
+
+                <label>Front notes<textarea id="completeFrontNotes" rows="3" placeholder="Fork markings, tyre pressure, brake-dive or grip notes."></textarea></label>
+              </section>
+            </div>
+          </section>
+
+          <div class="complete-save-bar"><div><strong>Save one complete vehicle setup</strong><span>Rear and front values are stored together under the selected bike.</span></div><button type="submit" class="primary-button">Save complete setup</button></div>
+        </form>
+      </section>
+
+      <section id="vehicles" class="page" data-page-title="My vehicles">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Vehicle profiles</p><h1>My vehicles</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Save each bike once. Its front and rear current setup will remain attached to this one profile.</p>
+
+        <form id="vehicleForm" class="clean-form">
+          <input id="vehicleId" type="hidden">
+          <section class="form-section">
+            <h2>Vehicle</h2>
+            <div class="field-grid">
+              <label>Profile name<input id="vehicleProfileName" type="text" placeholder="Val's Can-Am Spyder" required></label>
+              <label>Vehicle type
+                <select id="vehicleType">
+                  <option value="road-motorcycle">Road motorcycle</option>
+                  <option value="can-am-spyder">Can-Am Spyder / road trike</option>
+                  <option value="dirt-bike">Dirt bike / enduro</option>
+                  <option value="adventure">Adventure motorcycle</option>
+                  <option value="track">Track / race motorcycle</option>
+                  <option value="atv">ATV / side-by-side</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <div class="field-grid three">
+              <label>Make<input id="vehicleMake" type="text" placeholder="Can-Am"></label>
+              <label>Model<input id="vehicleModel" type="text" placeholder="Spyder RT"></label>
+              <label>Year<input id="vehicleYear" type="number" min="1900" max="2100" step="1" placeholder="2024"></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Rear suspension</h2>
+            <div class="field-grid">
+              <label>Shock brand<input id="rearShockBrand" type="text" placeholder="Wilbers, Öhlins, Showa…"></label>
+              <label>Shock model<input id="rearShockModel" type="text" placeholder="Model or part number"></label>
+            </div>
+            <label>Preload adjustment
+              <select id="rearPreloadType">
+                <option value="unknown">Not sure yet</option>
+                <option value="c-spanner">Threaded collar / C-spanner</option>
+                <option value="hydraulic">Hydraulic hand wheel</option>
+                <option value="stepped">Stepped preload collar</option>
+                <option value="electronic">Electronic adjustment</option>
+                <option value="fixed">Fixed / no external preload</option>
+              </select>
+            </label>
+            <fieldset class="check-panel">
+              <legend>Rear adjusters fitted</legend>
+              <div class="check-grid">
+                <label class="plain-check"><input id="rearHasPreload" type="checkbox" checked><span>Preload</span></label>
+                <label class="plain-check"><input id="rearHasCompression" type="checkbox"><span>Compression</span></label>
+                <label class="plain-check"><input id="rearHasRebound" type="checkbox"><span>Rebound</span></label>
+                <label class="plain-check"><input id="rearHasLsc" type="checkbox"><span>Low-speed compression</span></label>
+                <label class="plain-check"><input id="rearHasHsc" type="checkbox"><span>High-speed compression</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="form-section">
+            <h2>Front suspension</h2>
+            <div class="field-grid">
+              <label>Fork brand<input id="frontForkBrand" type="text" placeholder="KYB, WP, Showa…"></label>
+              <label>Fork model<input id="frontForkModel" type="text" placeholder="Model or description"></label>
+            </div>
+            <fieldset class="check-panel">
+              <legend>Front adjusters fitted</legend>
+              <div class="check-grid">
+                <label class="plain-check"><input id="frontHasPreload" type="checkbox"><span>Preload / top nut</span></label>
+                <label class="plain-check"><input id="frontHasCompression" type="checkbox"><span>Compression</span></label>
+                <label class="plain-check"><input id="frontHasRebound" type="checkbox"><span>Rebound</span></label>
+              </div>
+            </fieldset>
+            <label>Identification notes<textarea id="vehicleNotes" rows="4" placeholder="Example: Large outer fork nut marked PRELOAD. Small centre clicker marked COMP."></textarea></label>
+          </section>
+
+          <div class="form-buttons">
+            <button type="submit" class="primary-button">Save vehicle profile</button>
+            <button type="button" class="text-button" id="newVehicle">New</button>
+          </div>
+        </form>
+
+        <section class="saved-section">
+          <div class="saved-heading"><h2>Saved vehicles</h2><span id="vehicleCount">0 vehicles</span></div>
+          <div id="vehicleList" class="record-list" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section id="guided" class="page" data-page-title="Guided setup">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Step-by-step</p><h1>Guided setup</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Complete one small step at a time. Nothing is saved until the final review.</p>
+
+        <div class="wizard-progress" aria-label="Guided setup progress">
+          <span class="active" data-progress-step="1"><b>1</b><small>Vehicle</small></span>
+          <span data-progress-step="2"><b>2</b><small>Load</small></span>
+          <span data-progress-step="3"><b>3</b><small>Adjusters</small></span>
+          <span data-progress-step="4"><b>4</b><small>SAG</small></span>
+          <span data-progress-step="5"><b>5</b><small>Review</small></span>
+        </div>
+
+        <form id="guidedForm" class="clean-form wizard-form" novalidate>
+          <section class="wizard-step active" data-wizard-step="1">
+            <div class="form-section">
+              <h2>Choose the vehicle</h2>
+              <label>Saved vehicle
+                <select id="guidedVehicleSelect">
+                  <option value="manual">Enter a vehicle without saving a profile</option>
+                </select>
+              </label>
+              <div id="guidedManualVehicle">
+                <label>Vehicle name<input id="guidedVehicleName" type="text" placeholder="Val's Can-Am Spyder"></label>
+              </div>
+              <div id="guidedVehicleSummary" class="selection-summary hidden"></div>
+              <div class="inline-actions">
+                <button type="button" class="text-button" data-open-page="vehicles">Create or edit vehicles</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-wizard-step="2">
+            <div class="form-section">
+              <h2>Normal riding load</h2>
+              <label>Setup name<input id="guidedSetupName" type="text" placeholder="Two-up comfort baseline"></label>
+              <label>Load type
+                <select id="guidedLoadType">
+                  <option value="solo">Solo rider</option>
+                  <option value="two-up">Rider and passenger</option>
+                  <option value="touring">Rider, passenger and luggage</option>
+                  <option value="custom">Custom load</option>
+                </select>
+              </label>
+              <div class="field-grid three">
+                <label><span id="guidedRiderWeightLabel">Rider (kg)</span><input id="guidedRiderWeight" type="number" min="0" step="0.1"></label>
+                <label><span id="guidedPassengerWeightLabel">Passenger (kg)</span><input id="guidedPassengerWeight" type="number" min="0" step="0.1"></label>
+                <label><span id="guidedLuggageWeightLabel">Luggage (kg)</span><input id="guidedLuggageWeight" type="number" min="0" step="0.1"></label>
+              </div>
+              <p class="fine-print">Use the same normal riding load when measuring SAG and when road testing changes.</p>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-wizard-step="3">
+            <div class="form-section">
+              <h2>Suspension being adjusted</h2>
+              <div class="segmented-choice" role="group" aria-label="Suspension area">
+                <button type="button" class="active" data-guided-area="rear" aria-pressed="true">Rear shock</button>
+                <button type="button" data-guided-area="front" aria-pressed="false">Front forks</button>
+              </div>
+              <p id="guidedAreaHint" class="fine-print">Record only the adjusters actually fitted to the rear shock.</p>
+            </div>
+
+            <div class="form-section">
+              <h2>Available adjusters and baseline</h2>
+              <p class="fine-print">These are the starting positions the app will protect. “Clicks out” means gently turn toward the closed stop, count the clicks, then return to the starting position. Never force the stop.</p>
+              <div class="baseline-grid">
+                <label class="baseline-field" data-baseline="preload"><span><input id="guidedHasPreload" type="checkbox" checked> Preload</span><input id="guidedPreload" type="text" placeholder="Turns, rings, mm or position"></label>
+                <label class="baseline-field" data-baseline="compression"><span><input id="guidedHasCompression" type="checkbox"> Compression</span><input id="guidedCompression" type="text" placeholder="Clicks out"></label>
+                <label class="baseline-field" data-baseline="rebound"><span><input id="guidedHasRebound" type="checkbox"> Rebound</span><input id="guidedRebound" type="text" placeholder="Clicks out"></label>
+                <label class="baseline-field" data-baseline="lsc"><span><input id="guidedHasLsc" type="checkbox"> Low-speed compression</span><input id="guidedLsc" type="text" placeholder="Clicks out"></label>
+                <label class="baseline-field" data-baseline="hsc"><span><input id="guidedHasHsc" type="checkbox"> High-speed compression</span><input id="guidedHsc" type="text" placeholder="Turns or clicks out"></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-wizard-step="4">
+            <div class="form-section">
+              <h2>Optional SAG measurement</h2>
+              <p class="fine-print">Leave these blank to save a baseline without SAG. Use the same two fixed measuring points for L1, L2 and L3.</p>
+              <label>Riding style / target
+                <select id="guidedSagStyle">
+                  <option value="street">Street / normal riding</option>
+                  <option value="comfort">Plush / maximum comfort</option>
+                  <option value="sport">Sport road / firm</option>
+                  <option value="track">Race track / road race</option>
+                  <option value="adventure">Adventure / mixed terrain</option>
+                  <option value="offroad">Off-road / MX</option>
+                </select>
+              </label>
+              <div id="guidedTargetSummary" class="target-summary" aria-live="polite"></div>
+              <label><span id="guidedTravelLabel">Total WHEEL suspension travel (mm)</span><input id="guidedTravel" type="number" min="0.01" step="0.01" placeholder="Example: 150"></label>
+              <div class="measurement-explainer">
+                <strong>Wheel travel only</strong>
+                <span>Use the manufacturer’s wheel-travel figure. Shock shaft stroke is not automatically the same as wheel travel on angled, linked or A-arm suspension.</span>
+              </div>
+              <div class="measurement-explainer compact">
+                <strong>Shock angle does not need a separate correction here</strong>
+                <span>When L1/L2/L3 use the same chassis-to-wheel/hub measuring points, the suspension geometry is already represented in the actual wheel movement.</span>
+              </div>
+              <label class="measurement-row"><span class="measure-label l1">L1</span><span class="measurement-copy"><strong>Fully extended</strong><small>Wheel safely unloaded.</small></span><span class="input-with-unit"><input id="guidedL1" type="number" inputmode="decimal" min="0" step="0.1"><em data-length-unit>mm</em></span></label>
+              <label class="measurement-row"><span class="measure-label l2">L2</span><span class="measurement-copy"><strong>Vehicle only</strong><small>Level ground, no rider or luggage.</small></span><span class="input-with-unit"><input id="guidedL2" type="number" inputmode="decimal" min="0" step="0.1"><em data-length-unit>mm</em></span></label>
+              <label class="measurement-row"><span class="measure-label l3">L3</span><span class="measurement-copy"><strong>Normal riding load</strong><small>Use the load recorded in Step 2.</small></span><span class="input-with-unit"><input id="guidedL3" type="number" inputmode="decimal" min="0" step="0.1"><em data-length-unit>mm</em></span></label>
+              <div id="guidedSagPreview" class="selection-summary">SAG is optional. Enter all four measurements to calculate it.</div>
+            </div>
+          </section>
+
+          <section class="wizard-step" data-wizard-step="5">
+            <div class="form-section">
+              <h2>Review the baseline</h2>
+              <div id="guidedReview" class="review-sheet" aria-live="polite"></div>
+              <div id="guidedSagExplanation" class="sag-explanation hidden" aria-live="polite"></div>
+              <label>Road or workshop notes<textarea id="guidedNotes" rows="4" placeholder="Example: Starting setup before the shock was adjusted for two-up comfort."></textarea></label>
+            </div>
+            <div class="safety-strip compact">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+              <div><strong>Save before adjusting</strong><span>This creates the safe starting point you can return to later.</span></div>
+            </div>
+          </section>
+
+          <div class="wizard-actions">
+            <button type="button" class="text-button hidden" id="guidedPrevious">Previous</button>
+            <span id="guidedStepText">Step 1 of 5</span>
+            <button type="button" class="primary-button" id="guidedNext">Next</button>
+            <button type="submit" class="primary-button hidden" id="guidedSave">Save baseline</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="adjusters" class="page" data-page-title="Identify an adjuster">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Learn</p><h1>Identify an adjuster</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Choose the word that best matches the control you can see. The next page explains it in plain English.</p>
+
+        <div class="settings-card adjuster-list">
+          <button class="settings-row" type="button" data-adjuster="preload">
+            <span class="adjuster-dot preload"></span><span class="row-copy"><strong>Preload</strong><small>C-spanner collar, threaded ring, top nut or hydraulic hand wheel.</small></span><span class="chevron">›</span>
+          </button>
+          <button class="settings-row" type="button" data-adjuster="compression">
+            <span class="adjuster-dot compression"></span><span class="row-copy"><strong>Compression damping — top small adjuster</strong><small>Usually the small clicker at the top of the rear shock or on its reservoir. Often marked COMP or C.</small></span><span class="chevron">›</span>
+          </button>
+          <button class="settings-row" type="button" data-adjuster="rebound">
+            <span class="adjuster-dot rebound"></span><span class="row-copy"><strong>Rebound damping — lower small adjuster</strong><small>Usually the small clicker at the bottom of the rear shock near the lower eye. Often marked REB or R.</small></span><span class="chevron">›</span>
+          </button>
+          <button class="settings-row" type="button" data-adjuster="lsc">
+            <span class="adjuster-dot lsc"></span><span class="row-copy"><strong>Low-speed compression</strong><small>Controls slower suspension movements—not low road speed.</small></span><span class="chevron">›</span>
+          </button>
+          <button class="settings-row" type="button" data-adjuster="hsc">
+            <span class="adjuster-dot hsc"></span><span class="row-copy"><strong>High-speed compression</strong><small>Controls rapid shock movement from sharp or heavy impacts.</small></span><span class="chevron">›</span>
+          </button>
+          <button class="settings-row" type="button" data-adjuster="fork">
+            <span class="adjuster-dot fork"></span><span class="row-copy"><strong>Top of a front fork</strong><small>Top nut, centre clicker and model-specific controls.</small></span><span class="chevron">›</span>
+          </button>
+        </div>
+        <div class="tip-card"><strong>Not sure which one it is?</strong><span>Open the full visual guide and compare the suspension to the labelled examples.</span><button type="button" data-open-page="visual">Open visual guide</button></div>
+      </section>
+
+      <section id="adjusterDetail" class="page" data-page-title="Adjuster details">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-open-page="adjusters" aria-label="Return to adjuster list"><span>‹</span></button>
+          <div><p id="adjusterBadge" class="kicker">Adjuster</p><h1 id="adjusterTitle">Spring preload</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+
+        <div class="detail-hero">
+          <div class="detail-symbol" id="adjusterSymbol" aria-hidden="true">P</div>
+          <p id="adjusterSummary">Changes how much the spring is already compressed before the vehicle is loaded.</p>
+        </div>
+
+        <div class="detail-list">
+          <div><span>What it controls</span><p id="adjusterControls">SAG and where the suspension sits in its travel.</p></div>
+          <div><span>More adjustment</span><p id="adjusterMore">Higher ride position and less SAG.</p></div>
+          <div><span>Less adjustment</span><p id="adjusterLess">Lower ride position and more SAG.</p></div>
+          <div class="warning-detail"><span>Beginner warning</span><p id="adjusterWarning">Use measured SAG and confirm the direction in the manual.</p></div>
+        </div>
+
+        <div class="page-actions"><button class="primary-button" type="button" data-open-page="adjusters">Choose another adjuster</button><button class="text-button" type="button" data-close>Done</button></div>
+      </section>
+
+      <section id="sag" class="page" data-page-title="Measure SAG">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Step 1</p><h1>Measure SAG</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Measure between the same two fixed points every time. Enter <span id="sagLengthWord">millimetres</span>.</p>
+
+        <form class="clean-form" id="sagForm" novalidate>
+          <section class="form-section">
+            <h2>Target</h2>
+            <div class="field-grid">
+              <label>Suspension area
+                <select id="sagArea">
+                  <option value="rear">Rear shock</option>
+                  <option value="front">Front forks</option>
+                </select>
+              </label>
+              <label>Riding style
+                <select id="sagType">
+                  <option value="street">Street / normal riding</option>
+                  <option value="comfort">Plush / maximum comfort</option>
+                  <option value="sport">Sport road / firm</option>
+                  <option value="track">Race track / road race</option>
+                  <option value="adventure">Adventure / mixed terrain</option>
+                  <option value="offroad">Off-road / MX</option>
+                  <option value="custom">Manufacturer or custom range</option>
+                </select>
+              </label>
+            </div>
+            <div id="sagTargetSummary" class="target-summary" aria-live="polite"></div>
+            <label><span id="travelLabel">Total WHEEL suspension travel (mm)</span>
+              <input id="travel" type="number" inputmode="decimal" min="0.01" step="0.01" placeholder="Example: 150" required>
+            </label>
+            <div class="measurement-explainer">
+              <strong>Use wheel travel — not shock shaft stroke</strong>
+              <span>Enter the manufacturer’s front or rear wheel-suspension travel. If L1, L2 and L3 are measured between the same fixed chassis and wheel/hub reference points, shock angle and linkage geometry are already included in the physical measurement.</span>
+            </div>
+            <div id="customTarget" class="field-grid hidden">
+              <label>Minimum target (%)<input id="targetMin" type="number" min="1" max="90" step="0.1" value="28"></label>
+              <label>Maximum target (%)<input id="targetMax" type="number" min="1" max="90" step="0.1" value="33"></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Measurements</h2>
+            <div class="measurement-explainer compact">
+              <strong>Keep exactly the same two measuring points</strong>
+              <span>Measure from one fixed chassis/body point to one fixed wheel or hub point for L1, L2 and L3. Do not measure along an angled shock body unless the manufacturer specifically tells you to.</span>
+            </div>
+            <label class="measurement-row"><span class="measure-label l1">L1</span><span class="measurement-copy"><strong>Fully extended</strong><small>Wheel safely unloaded.</small></span><span class="input-with-unit"><input id="l1" type="number" inputmode="decimal" min="0" step="0.1" required><em data-length-unit>mm</em></span></label>
+            <label class="measurement-row"><span class="measure-label l2">L2</span><span class="measurement-copy"><strong>Vehicle only</strong><small>Level ground, no rider or luggage.</small></span><span class="input-with-unit"><input id="l2" type="number" inputmode="decimal" min="0" step="0.1" required><em data-length-unit>mm</em></span></label>
+            <label class="measurement-row"><span class="measure-label l3">L3</span><span class="measurement-copy"><strong>Normal riding load</strong><small>Rider, passenger and normal luggage.</small></span><span class="input-with-unit"><input id="l3" type="number" inputmode="decimal" min="0" step="0.1" required><em data-length-unit>mm</em></span></label>
+          </section>
+
+          <div class="form-buttons"><button type="submit" class="primary-button">Calculate SAG</button><button type="button" class="text-button" id="clearSag">Clear</button></div>
+          <p class="fine-print">These ranges are general starting points. Use the vehicle or suspension manufacturer’s specification where available.</p>
+        </form>
+
+        <section class="result-sheet" id="sagResults" aria-live="polite">
+          <p class="kicker">Result</p>
+          <h2>Enter the four measurements</h2>
+          <p>Your static SAG, loaded SAG and loaded percentage will appear here.</p>
+        </section>
+      </section>
+
+
+      <section id="damping" class="page" data-page-title="Fine-tune damping">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">After SAG</p><h1>Fine-tune compression &amp; rebound</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Damping has no universal percentage like SAG. Fine-tuning uses the clicker positions, one repeatable riding symptom and a before-and-after comparison.</p>
+
+        <div class="safety-strip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+          <div>
+            <strong>Correct SAG first</strong>
+            <span>Preload sets the suspension position. Compression and rebound only fine-tune how quickly the suspension moves.</span>
+          </div>
+        </div>
+
+        <section class="damping-principles" aria-label="Compression and rebound quick guide">
+          <article class="damping-principle">
+            <div class="principle-heading"><span class="damping-letter">C</span><div><p class="kicker">As the bump is hit</p><h2>Compression damping — top small adjuster</h2><small class="adjuster-location-note">Rear shock: top body or reservoir clicker, usually marked COMP or C.</small></div></div>
+            <p>Controls the resistance while the suspension moves inward under a bump, braking, acceleration or cornering load.</p>
+            <div class="effect-grid">
+              <div><strong>More damping</strong><span>More support, less dive, squat and bottoming.</span><small>Too much can feel sharp, harsh or reduce grip.</small></div>
+              <div><strong>Less damping</strong><span>Softer, freer movement and more bump absorption.</span><small>Too little can dive, wallow or bottom out.</small></div>
+            </div>
+          </article>
+
+          <article class="damping-principle">
+            <div class="principle-heading"><span class="damping-letter">R</span><div><p class="kicker">After the bump</p><h2>Rebound damping — lower small adjuster</h2><small class="adjuster-location-note">Rear shock: lower clicker near the bottom eye, usually marked REB or R.</small></div></div>
+            <p>Controls how quickly the spring lets the suspension extend and return after it has been compressed.</p>
+            <div class="effect-grid">
+              <div><strong>More damping</strong><span>Slower, calmer return with less kick or bounce.</span><small>Too much can pack down and become harsh over repeated bumps.</small></div>
+              <div><strong>Less damping</strong><span>Faster recovery between bumps.</span><small>Too little can launch, kick or bounce after the bump.</small></div>
+            </div>
+          </article>
+        </section>
+        <p class="fork-location-caveat">Front-fork adjuster positions vary by fork design. Follow the markings: <strong>COMP/C</strong> for compression and <strong>REB/R</strong> for rebound.</p>
+
+        <section class="direction-guide">
+          <div><p class="kicker">Direction guide</p><h2>Know what the turn means</h2></div>
+          <div class="direction-grid">
+            <div><span class="direction-symbol">+</span><strong>More damping</strong><p>Usually turn clockwise, toward H / HARD / +, or close the adjuster.</p></div>
+            <div><span class="direction-symbol">−</span><strong>Less damping</strong><p>Usually turn counter-clockwise, toward S / SOFT / −, or open the adjuster.</p></div>
+            <div><span class="direction-symbol">13</span><strong>Clicks out: smaller number</strong><p>Fewer clicks out from closed means more damping.</p></div>
+            <div><span class="direction-symbol">15</span><strong>Clicks out: larger number</strong><p>More clicks out from closed means less damping.</p></div>
+          </div>
+          <p class="fine-print">Use the actual +/−, H/S or manufacturer instructions on the shock or fork. Some products use different layouts or marked positions.</p>
+        </section>
+
+        <div class="wizard-progress damping-progress" aria-label="Damping fine-tune progress">
+          <span class="active" data-damping-progress="1"><b>1</b><small>Baseline</small></span>
+          <span data-damping-progress="2"><b>2</b><small>Goal</small></span>
+          <span data-damping-progress="3"><b>3</b><small>Measure</small></span>
+          <span data-damping-progress="4"><b>4</b><small>Adjust</small></span>
+          <span data-damping-progress="5"><b>5</b><small>Recheck</small></span>
+        </div>
+
+        <form id="dampingForm" class="clean-form wizard-form" novalidate>
+          <section class="wizard-step damping-step active" data-damping-step="1">
+            <section class="form-section">
+              <h2>Initial clicker measurements</h2>
+              <p class="fine-print">These are the original positions you can always return to. Record the values before turning an adjuster.</p>
+              <label>Saved setup record
+                <select id="dampingRecordSelect">
+                  <option value="">Enter the current settings manually</option>
+                </select>
+              </label>
+              <div class="field-grid">
+                <label>Saved vehicle
+                  <select id="dampingVehicleSelect">
+                    <option value="">No saved vehicle selected</option>
+                  </select>
+                </label>
+                <label>Suspension area
+                  <select id="dampingArea">
+                    <option value="rear">Rear shock</option>
+                    <option value="front">Front forks</option>
+                  </select>
+                </label>
+              </div>
+              <label>Vehicle name<input id="dampingVehicleName" type="text" placeholder="Val's Can-Am Spyder"></label>
+              <label>How are the adjusters measured?
+                <select id="dampingConvention">
+                  <option value="clicks-out">Clicks out from gently closed</option>
+                  <option value="turns-out">Turns out from gently closed</option>
+                  <option value="marked-scale">Numbered or marked dial</option>
+                  <option value="unknown">Unknown / copy the visible markings</option>
+                </select>
+              </label>
+            </section>
+
+            <section class="form-section">
+              <h2>Starting positions</h2>
+              <div class="baseline-grid damping-baselines">
+                <label class="baseline-field" data-damping-field="compression"><span><input id="dampingHasCompression" type="checkbox" checked> Compression</span><input id="dampingCompression" type="text" inputmode="decimal" placeholder="Initial setting, e.g. 14"></label>
+                <label class="baseline-field" data-damping-field="rebound"><span><input id="dampingHasRebound" type="checkbox" checked> Rebound</span><input id="dampingRebound" type="text" inputmode="decimal" placeholder="Initial setting, e.g. 12"></label>
+                <label class="baseline-field" data-damping-field="lsc"><span><input id="dampingHasLsc" type="checkbox"> Low-speed compression</span><input id="dampingLsc" type="text" inputmode="decimal" placeholder="Initial clicks out"></label>
+                <label class="baseline-field" data-damping-field="hsc"><span><input id="dampingHasHsc" type="checkbox"> High-speed compression</span><input id="dampingHsc" type="text" inputmode="decimal" placeholder="Initial clicks / turns / position"></label>
+              </div>
+              <div class="safety-strip compact">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+                <div><strong>Gently closed only</strong><span>When counting clicks out, turn toward closed only until the light stop is reached. Never tighten or force it.</span></div>
+              </div>
+            </section>
+          </section>
+
+          <section class="wizard-step damping-step" data-damping-step="2">
+            <section class="form-section">
+              <h2>What are you trying to achieve?</h2>
+              <label>Fine-tuning goal
+                <select id="dampingGoal">
+                  <option value="comfort">Plush comfort</option>
+                  <option value="balanced" selected>Balanced street riding</option>
+                  <option value="sport">Firm sport-road support</option>
+                  <option value="adventure">Adventure grip and recovery</option>
+                  <option value="track">Track control and stability</option>
+                  <option value="custom">Custom goal</option>
+                </select>
+              </label>
+              <div id="dampingGoalSummary" class="goal-summary" aria-live="polite"></div>
+              <label id="dampingCustomGoalWrap" class="hidden">Custom goal<textarea id="dampingCustomGoal" rows="3" placeholder="Describe the exact improvement you want without creating another problem."></textarea></label>
+            </section>
+
+            <section class="form-section">
+              <h2>Make the test repeatable</h2>
+              <label>Test section or road<input id="dampingTestRoute" type="text" placeholder="Example: same speed hump at approximately 20 km/h"></label>
+              <label>Test feature
+                <select id="dampingTestFeature">
+                  <option value="single-bump">Single bump or speed hump</option>
+                  <option value="sharp-edge">Pothole, rock or sharp edge</option>
+                  <option value="long-dip">Long dip or compression</option>
+                  <option value="repeated-bumps">Repeated bumps or corrugations</option>
+                  <option value="braking-cornering">Braking, acceleration or cornering load</option>
+                  <option value="custom">Custom test section</option>
+                </select>
+              </label>
+              <div class="test-loop">
+                <h3>Keep these conditions the same</h3>
+                <ol>
+                  <li>Same rider, passenger, luggage and tyre pressures.</li>
+                  <li>Same safe road or track section and approximately the same speed.</li>
+                  <li>Change only one adjuster by one small step.</li>
+                  <li>Score the same symptom before and after.</li>
+                </ol>
+              </div>
+            </section>
+          </section>
+
+          <section class="wizard-step damping-step" data-damping-step="3">
+            <section class="form-section">
+              <h2>Measure the current ride</h2>
+              <p class="fine-print">Choose the single clearest symptom. This becomes the measurement the app compares after the adjustment.</p>
+
+              <div class="symptom-choice-grid">
+                <label class="symptom-choice">
+                  <input type="radio" name="dampingSymptom" value="compression-harsh">
+                  <span class="symptom-choice-icon">C−</span>
+                  <span><strong>Harsh as the bump is hit</strong><small>Sharp impact through the chassis while the suspension moves inward.</small></span>
+                </label>
+                <label class="symptom-choice">
+                  <input type="radio" name="dampingSymptom" value="compression-soft">
+                  <span class="symptom-choice-icon">C+</span>
+                  <span><strong>Soft, dives or bottoms</strong><small>Uses too much travel in a long dip, braking zone or compression.</small></span>
+                </label>
+                <label class="symptom-choice">
+                  <input type="radio" name="dampingSymptom" value="rebound-fast">
+                  <span class="symptom-choice-icon">R+</span>
+                  <span><strong>Kicks or bounces after the bump</strong><small>The suspension returns too quickly after compression.</small></span>
+                </label>
+                <label class="symptom-choice">
+                  <input type="radio" name="dampingSymptom" value="rebound-slow">
+                  <span class="symptom-choice-icon">R−</span>
+                  <span><strong>Packs down over repeated bumps</strong><small>The suspension cannot extend before the next bump.</small></span>
+                </label>
+              </div>
+
+              <details class="advanced-symptoms">
+                <summary>Specialist high-speed and low-speed compression</summary>
+                <div class="symptom-choice-grid">
+                  <label class="symptom-choice">
+                    <input type="radio" name="dampingSymptom" value="lsc-soft">
+                    <span class="symptom-choice-icon">L+</span>
+                    <span><strong>Excessive squat, dive or wallow</strong><small>Slow chassis movement lacks support.</small></span>
+                  </label>
+                  <label class="symptom-choice">
+                    <input type="radio" name="dampingSymptom" value="lsc-harsh">
+                    <span class="symptom-choice-icon">L−</span>
+                    <span><strong>Too firm through gradual load transfer</strong><small>Comfort or grip is poor through smooth corners and rolling terrain.</small></span>
+                  </label>
+                  <label class="symptom-choice">
+                    <input type="radio" name="dampingSymptom" value="hsc-harsh">
+                    <span class="symptom-choice-icon">H−</span>
+                    <span><strong>Harsh on potholes or square edges</strong><small>Rapid suspension movement feels locked or sharp.</small></span>
+                  </label>
+                  <label class="symptom-choice">
+                    <input type="radio" name="dampingSymptom" value="hsc-soft">
+                    <span class="symptom-choice-icon">H+</span>
+                    <span><strong>Bottoms on a sharp impact</strong><small>Rapid movement uses the stroke too easily.</small></span>
+                  </label>
+                </div>
+              </details>
+
+              <div id="dampingMeasureGuide" class="measure-guide">Choose a symptom to see exactly what the test is trying to improve.</div>
+
+              <label>Initial symptom score
+                <select id="dampingBeforeScore">
+                  <option value="">Choose 0–5</option>
+                  <option value="0">0 — not present</option>
+                  <option value="1">1 — very slight</option>
+                  <option value="2">2 — mild</option>
+                  <option value="3">3 — clear</option>
+                  <option value="4">4 — strong</option>
+                  <option value="5">5 — severe / stop testing</option>
+                </select>
+              </label>
+            </section>
+          </section>
+
+          <section class="wizard-step damping-step" data-damping-step="4">
+            <section class="form-section">
+              <h2>One-step fine-tuning plan</h2>
+              <div id="dampingPlan" class="damping-plan-output" aria-live="polite"></div>
+            </section>
+          </section>
+
+          <section class="wizard-step damping-step" data-damping-step="5">
+            <section class="form-section">
+              <h2>Input the new setting and recalculate</h2>
+              <div id="dampingCompareSummary" class="selection-summary"></div>
+
+              <div class="damping-before-after">
+                <div><span>Initial setting</span><strong id="dampingInitialSettingDisplay">—</strong></div>
+                <div><span>Suggested one-step setting</span><strong id="dampingSuggestedSettingDisplay">—</strong></div>
+              </div>
+
+              <label>Actual setting tested<input id="dampingAfterSetting" type="text" placeholder="Enter the setting after adjustment"></label>
+              <label>Symptom score after the same test
+                <select id="dampingAfterScore">
+                  <option value="">Choose 0–5</option>
+                  <option value="0">0 — not present</option>
+                  <option value="1">1 — very slight</option>
+                  <option value="2">2 — mild</option>
+                  <option value="3">3 — clear</option>
+                  <option value="4">4 — strong</option>
+                  <option value="5">5 — severe / stop testing</option>
+                </select>
+              </label>
+              <label>Did a new problem appear?
+                <select id="dampingNewIssue">
+                  <option value="none">No new problem</option>
+                  <option value="harshness">New harshness or loss of grip</option>
+                  <option value="bottoming">New dive, wallow or bottoming</option>
+                  <option value="kick">New kick or bouncing</option>
+                  <option value="packing">New pack-down over repeated bumps</option>
+                  <option value="stability">Reduced stability or control</option>
+                </select>
+              </label>
+
+              <div class="form-buttons">
+                <button type="button" class="primary-button" id="dampingRecalculate">Recalculate fine-tune result</button>
+                <button type="button" class="text-button" id="dampingResetAfter">Clear after-test input</button>
+              </div>
+
+              <div id="dampingOutcome" class="damping-outcome" aria-live="polite">
+                Enter the new setting and after-test score, then press Recalculate.
+              </div>
+              <label>Test notes<textarea id="dampingNotes" rows="4" placeholder="What changed? Was comfort, grip, support and stability better or worse?"></textarea></label>
+            </section>
+
+            <div class="safety-strip compact">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.8 6.4v5.1c0 4.8 3.3 8.2 8.2 9.5 4.9-1.3 8.2-4.7 8.2-9.5V6.4Z"/><path d="M12 7v5m0 4h.01"/></svg>
+              <div><strong>Keep the setting only when it improves the chosen symptom without creating another problem</strong><span>A worse or unstable result means return to the recorded initial position.</span></div>
+            </div>
+          </section>
+
+          <div class="wizard-actions">
+            <button type="button" class="text-button hidden" id="dampingPrevious">Previous</button>
+            <span id="dampingStepText">Step 1 of 5</span>
+            <button type="button" class="primary-button" id="dampingNext">Next</button>
+            <button type="submit" class="primary-button hidden" id="dampingSave">Save fine-tune record</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="records" class="page" data-page-title="Test history">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Saved tests</p><h1>Test history</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">These are adjustment and road-test entries attached to a vehicle. They do not create duplicate vehicle profiles.</p>
+
+        <form id="recordForm" class="clean-form">
+          <input id="recordId" type="hidden">
+          <input id="recordSuspensionArea" type="hidden">
+          <input id="recordTargetStyle" type="hidden">
+          <input id="recordTargetLabel" type="hidden">
+          <input id="recordTargetMin" type="hidden">
+          <input id="recordTargetMax" type="hidden">
+          <input id="recordTravelMm" type="hidden">
+          <input id="recordTuningType" type="hidden">
+          <input id="recordTuningSymptom" type="hidden">
+          <input id="recordTuningAction" type="hidden">
+          <input id="recordTuningOutcome" type="hidden">
+          <input id="recordTestRoute" type="hidden">
+          <input id="recordSettingBefore" type="hidden">
+          <input id="recordSettingAfter" type="hidden">
+          <input id="recordBeforeScore" type="hidden">
+          <input id="recordAfterScore" type="hidden">
+          <input id="recordInitialTravelMm" type="hidden">
+          <input id="recordInitialL1Mm" type="hidden">
+          <input id="recordInitialL2Mm" type="hidden">
+          <input id="recordInitialL3Mm" type="hidden">
+          <input id="recordAfterTravelMm" type="hidden">
+          <input id="recordAfterL1Mm" type="hidden">
+          <input id="recordAfterL2Mm" type="hidden">
+          <input id="recordAfterL3Mm" type="hidden">
+          <input id="recordAfterStaticSagMm" type="hidden">
+          <input id="recordAfterLoadedSagMm" type="hidden">
+          <input id="recordAfterSagPercent" type="hidden">
+          <input id="recordDampingGoal" type="hidden">
+          <input id="recordDampingGoalLabel" type="hidden">
+          <input id="recordDampingGoalSuccess" type="hidden">
+          <input id="recordDampingNewIssue" type="hidden">
+          <input id="recordDampingNextAction" type="hidden">
+          <section class="form-section">
+            <h2>Vehicle and load</h2>
+            <div class="field-grid">
+              <label>Vehicle<input id="vehicleName" type="text" placeholder="Val's Can-Am Spyder" required></label>
+              <label>Setup name<input id="setupName" type="text" placeholder="Two-up comfort test" required></label>
+            </div>
+            <div class="field-grid three">
+              <label><span id="riderWeightLabel">Rider (kg)</span><input id="riderWeight" type="number" min="0" step="0.1"></label>
+              <label><span id="passengerWeightLabel">Passenger (kg)</span><input id="passengerWeight" type="number" min="0" step="0.1"></label>
+              <label><span id="luggageWeightLabel">Luggage (kg)</span><input id="luggageWeight" type="number" min="0" step="0.1"></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Suspension settings</h2>
+            <div class="field-grid three">
+              <label>Preload<input id="preloadSetting" type="text" placeholder="Turns, rings or position"></label>
+              <label>Compression<input id="compressionSetting" type="text" placeholder="Clicks out"></label>
+              <label>Rebound<input id="reboundSetting" type="text" placeholder="Clicks out"></label>
+            </div>
+            <div class="field-grid">
+              <label>High-speed compression<input id="hscSetting" type="text" placeholder="Turns or position"></label>
+              <label>Low-speed compression<input id="lscSetting" type="text" placeholder="Clicks out"></label>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>SAG and test result</h2>
+            <div class="field-grid three">
+              <label><span id="recordStaticSagLabel">Static SAG (mm)</span><input id="recordStaticSag" type="number" min="0" step="0.01"></label>
+              <label><span id="recordLoadedSagLabel">Loaded SAG (mm)</span><input id="recordLoadedSag" type="number" min="0" step="0.01"></label>
+              <label>Loaded SAG (%)<input id="recordSagPercent" type="number" min="0" step="0.1"></label>
+            </div>
+            <label>Road, symptoms and result<textarea id="recordNotes" rows="5" placeholder="Example: Passenger kicked upward after a sharp bump. Two clicks more rebound improved it."></textarea></label>
+          </section>
+
+          <div class="form-buttons"><button type="submit" class="primary-button">Save setup</button><button type="button" class="text-button" id="newRecord">New</button><button type="button" class="text-button" id="exportRecords">Export</button></div>
+        </form>
+
+        <section class="saved-section">
+          <div class="saved-heading"><h2>Saved setups</h2><span id="recordCount">0 records</span></div>
+          <div id="recordList" class="record-list" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section id="visual" class="page wide-page" data-page-title="Full visual guide">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Reference</p><h1>Full visual guide</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Compare C-spanner, hydraulic and specialist shocks, front-fork controls, SAG and common rider symptoms.</p>
+        <figure class="poster-wrap">
+          <button class="poster-button" id="openPoster" type="button" aria-label="Open the suspension visual guide at full size">
+            <img src="assets/suspension-adjusters-guide.png" alt="Suspension adjuster infographic showing rear shock types, front fork top adjusters, SAG measurements and common symptoms.">
+          </button>
+          <figcaption>
+            <span>General guide only. Confirm the exact location and adjustment direction in the manual for the suspension being worked on.</span>
+            <button type="button" id="openPosterText">View full size</button>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="symptoms" class="page" data-page-title="What am I feeling?">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Troubleshooting</p><h1>What am I feeling?</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">These are starting clues—not proof. Check SAG and spring suitability before chasing clickers.</p>
+        <div class="symptom-list">
+          <article><span class="symptom-icon">↑</span><div><h2>Kicks upward after the bump</h2><p>First check rebound. Too little rebound damping may let the suspension extend too quickly. Spring rate and compression may also contribute.</p><button type="button" data-adjuster="rebound">Read about rebound</button></div></article>
+          <article><span class="symptom-icon">!</span><div><h2>Harsh on every bump</h2><p>Check SAG, spring rate and compression. Excess compression damping or an overly firm spring can stop the wheel from absorbing the bump.</p><button type="button" data-adjuster="compression">Read about compression</button></div></article>
+          <article><span class="symptom-icon">↧</span><div><h2>Dives or bottoms out</h2><p>Check SAG and preload first. Too little compression damping or a spring that is too soft may also be involved.</p><button type="button" data-adjuster="preload">Read about preload</button></div></article>
+          <article><span class="symptom-icon">↕</span><div><h2>Bounces or pogos after bumps</h2><p>Rebound may be returning too quickly. Record the starting setting and add damping only in small steps.</p><button type="button" data-adjuster="rebound">Read about rebound</button></div></article>
+          <article><span class="symptom-icon">≋</span><div><h2>Gets harsher over repeated bumps</h2><p>The suspension may be packing down because rebound is too slow and cannot recover before the next bump.</p><button type="button" data-adjuster="rebound">Read about rebound</button></div></article>
+        </div>
+      </section>
+
+      <section id="method" class="page" data-page-title="Safe adjustment method">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">Golden rules</p><h1>Safe adjustment method</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <div class="method-steps">
+          <article><span>1</span><div><h2>Measure</h2><p>Record the current SAG, load and every clicker or preload position.</p></div></article>
+          <article><span>2</span><div><h2>Change one thing</h2><p>Make only one small adjustment—normally one or two clicks or a small preload change.</p></div></article>
+          <article><span>3</span><div><h2>Test consistently</h2><p>Use the same road, same bump, similar speed and the same rider and luggage load.</p></div></article>
+          <article><span>4</span><div><h2>Evaluate</h2><p>Decide whether it is better, worse or unchanged. Avoid adjusting from memory.</p></div></article>
+          <article><span>5</span><div><h2>Record</h2><p>Save the result so the previous safe setting can always be restored.</p></div></article>
+        </div>
+        <div class="rule-box"><strong>Never force an adjuster past its gentle stop.</strong><p>Count clicks gently and follow the suspension manufacturer’s manual for the correct direction and allowed adjustment range.</p></div>
+      </section>
+
+
+      <section id="units" class="page" data-page-title="Measurement units">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">App setting</p><h1>Measurement units</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <p class="page-summary">Choose how measurements, results and saved setups are shown. Values already entered are converted automatically.</p>
+
+        <div class="unit-settings">
+          <section class="unit-choice-card" aria-labelledby="unitChoiceHeading">
+            <h2 id="unitChoiceHeading">Unit system</h2>
+            <button class="unit-choice" type="button" data-set-units="metric" aria-pressed="true">
+              <span class="unit-symbol">mm<br><small>kg</small></span>
+              <span class="unit-choice-copy"><strong>Metric</strong><small>Millimetres for length and kilograms for weight.</small></span>
+              <span class="unit-check" aria-hidden="true">✓</span>
+            </button>
+            <button class="unit-choice" type="button" data-set-units="imperial" aria-pressed="false">
+              <span class="unit-symbol">in<br><small>lb</small></span>
+              <span class="unit-choice-copy"><strong>Imperial</strong><small>Inches for length and pounds for weight.</small></span>
+              <span class="unit-check" aria-hidden="true">✓</span>
+            </button>
+          </section>
+
+          <section class="conversion-reference">
+            <h2>Automatic conversion</h2>
+            <div><strong>1 inch</strong><span>= 25.4 millimetres</span></div>
+            <div><strong>1 kilogram</strong><span>= 2.20462 pounds</span></div>
+            <p>The app keeps one accurate internal value, then displays it in the unit system selected here. SAG percentage does not change.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="about" class="page" data-page-title="About and data">
+        <div class="subpage-header">
+          <button class="icon-button back-button" type="button" data-back aria-label="Go back"><span>‹</span></button>
+          <div><p class="kicker">App</p><h1>About and data</h1></div>
+          <button class="icon-button close-button" type="button" data-close aria-label="Close and return to settings"><span>×</span></button>
+        </div>
+        <div class="about-list">
+          <div><h2>Version</h2><p>Version 1.4 — local Search My Garage & App across saved bikes, settings, history and help.</p></div>
+          <div><h2>Install on this device</h2><p id="installStatus">When hosted securely, this guide can be installed like an app and used offline.</p><div class="inline-actions"><button class="text-button" type="button" id="installApp" disabled>Install app</button></div></div>
+          <div><h2>Where records are stored</h2><p>Vehicle profiles and setup records are stored locally in this browser. They are not uploaded by this prototype.</p><div class="inline-actions"><button class="text-button" type="button" id="aboutExport">Export records</button><button class="text-button" type="button" id="aboutImport">Import records</button><button class="danger-text-button" type="button" id="clearAllRecords">Clear all records</button><input id="importFile" type="file" accept="application/json,.json" hidden></div></div>
+          <div><h2>Offline use</h2><p>When served from a website, the Progressive Web App files allow the guide to work offline after the first successful load.</p></div>
+          <div><h2>SAG guidance</h2><p>The built-in ranges are general starting points compiled from established suspension guidance. Always use the vehicle or suspension manufacturer’s model-specific specification when available.</p></div>
+          <div><h2>Safety</h2><p>This is an educational guide, not a replacement for the suspension manufacturer’s manual or a qualified suspension technician.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Suspension Setup Guide</span>
+      <span>Identify · Measure · Adjust · Test · Record</span>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
