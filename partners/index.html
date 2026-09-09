@@ -1,59 +1,386 @@
-LEX & WHITE STUDIOS
-Home Member Benefits Partners Suspension Guide Support
-Partner With Lex & White Studios
-Build useful customer benefits with an Australian software company.
-Lex & White Studios develops privacy, productivity and practical consumer software. We are selecting a small number of foundation partners whose products and services genuinely fit our customers.
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Partner With Us | Lex &amp; White Studios</title>
+<meta name="description" content="Partner with Lex & White Studios through member benefits, tracked referrals and selected promotional opportunities.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
-Discuss a Partnership View Member Benefits
-What we are building
-Web Privacy Pro is our commercial Windows browser, and Lex & White Studios is expanding into practical software and tools for everyday users. Member Benefits will connect those customers with a small number of selected partner offers.
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(124,58,237,.18),transparent 34%),
+    #07070d;
+  color:#f4f4f8;
+  min-height:100vh;
+}
+a{color:inherit}
+.site-header{
+  width:100%;
+  min-height:72px;
+  padding:18px 42px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:26px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(8,8,14,.94);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.brand-link{
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:1.4px;
+  font-size:13px;
+  white-space:nowrap;
+}
+.site-header nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:20px;
+}
+.site-header nav a{
+  color:#c3c5d1;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+}
+.site-header nav a:hover,
+.site-header nav a.active{color:#fff}
+.page{
+  width:min(1160px,calc(100% - 36px));
+  margin:0 auto;
+  padding:56px 0 76px;
+}
+.hero{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  padding:58px 46px;
+  background:
+    radial-gradient(circle at 14% 4%,rgba(124,58,237,.28),transparent 35%),
+    radial-gradient(circle at 88% 8%,rgba(51,93,235,.18),transparent 32%),
+    rgba(16,15,25,.96);
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:280px;height:280px;
+  border-radius:50%;
+  right:-110px;bottom:-150px;
+  background:rgba(124,58,237,.09);
+  filter:blur(2px);
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid rgba(124,58,237,.55);
+  background:rgba(124,58,237,.13);
+  color:#d7cbff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.hero h1{
+  max-width:850px;
+  margin:20px 0 0;
+  font-size:clamp(38px,5.8vw,64px);
+  line-height:1.03;
+  letter-spacing:-.035em;
+}
+.lead{
+  max-width:790px;
+  margin:22px 0 0;
+  color:#b9bdcf;
+  line-height:1.72;
+  font-size:18px;
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:12px;
+  border:1px solid rgba(124,58,237,.62);
+  background:linear-gradient(135deg,#8a27ff,#5538f0);
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(87,40,210,.22);
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.secondary{
+  background:rgba(255,255,255,.045);
+  border-color:rgba(255,255,255,.15);
+  box-shadow:none;
+}
+.section{margin-top:64px}
+.section-title{max-width:780px;margin-bottom:24px}
+.section-title h2{
+  margin:0 0 9px;
+  font-size:clamp(27px,4vw,38px);
+  letter-spacing:-.02em;
+}
+.section-title p{margin:0;color:#a9aec2;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  padding:24px;
+  min-height:100%;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.025));
+  box-shadow:0 16px 44px rgba(0,0,0,.13);
+}
+.card:hover{border-color:rgba(124,58,237,.32)}
+.icon{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  margin-bottom:18px;
+  border-radius:12px;
+  border:1px solid rgba(124,58,237,.42);
+  background:rgba(124,58,237,.11);
+  color:#cbbcff;
+  font-weight:900;
+  font-size:16px;
+}
+.card h3{margin:0 0 10px;font-size:19px}
+.card p{margin:0;color:#aeb3c6;line-height:1.65}
+.status{
+  display:inline-flex;
+  width:fit-content;
+  margin:0 0 14px;
+  padding:5px 9px;
+  border:1px solid rgba(51,93,235,.43);
+  border-radius:999px;
+  background:rgba(51,93,235,.11);
+  color:#b9c8ff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.list{
+  display:grid;
+  gap:12px;
+  margin:16px 0 0;
+  padding:0;
+  list-style:none;
+}
+.list li{
+  position:relative;
+  padding-left:25px;
+  color:#c0c4d4;
+  line-height:1.55;
+}
+.list li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#9caeff;
+  font-weight:900;
+}
+.callout{
+  margin-top:64px;
+  padding:32px;
+  border:1px solid rgba(124,58,237,.30);
+  border-radius:20px;
+  background:
+    linear-gradient(135deg,rgba(124,58,237,.11),rgba(51,93,235,.055)),
+    rgba(255,255,255,.02);
+}
+.callout h2{margin:0 0 10px;font-size:29px}
+.callout p{max-width:850px;margin:0;color:#b4b8ca;line-height:1.7}
+.disclosure{
+  margin-top:32px;
+  padding:18px 20px;
+  border-left:3px solid #7c3aed;
+  background:rgba(255,255,255,.026);
+  color:#9fa4b8;
+  font-size:13px;
+  line-height:1.65;
+}
+.site-footer{
+  padding:28px 36px 34px;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:#09090f;
+  text-align:center;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:17px;
+  margin-bottom:14px;
+}
+.footer-links a{
+  color:#aeb2c3;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+}
+.footer-links a:hover{color:#fff}
+.copyright{margin:7px 0;color:#777d92;font-size:12px}
+.back-strip{
+  margin-bottom:14px;
+}
+.back-strip a{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#aeb4cb;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+.back-strip a:hover{color:#fff}
+@media(max-width:900px){
+  .site-header{padding:16px 20px;align-items:flex-start}
+  .site-header nav{gap:12px}
+  .grid,.grid.two{grid-template-columns:1fr}
+  .hero{padding:40px 26px}
+  .page{padding-top:34px}
+}
+@media(max-width:670px){
+  .site-header{flex-direction:column}
+  .site-header nav{justify-content:flex-start}
+  .actions{flex-direction:column}
+  .btn{width:100%}
+  .page{width:min(100% - 24px,1160px)}
+}
+</style>
 
-↗
-Qualified referrals
-Send interested customers directly to the partner's approved landing page, store or campaign using agreed tracking.
+</head>
+<body>
+<header class="site-header">
+  <a class="brand-link" href="/">LEX &amp; WHITE STUDIOS</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/benefits/">Member Benefits</a>
+    <a class="active" href="/partners/">Partners</a>
+    <a href="/suspension-setup-guide/">Suspension Guide</a>
+    <a href="/support.html">Support</a>
+  </nav>
+</header>
 
-★
-Member value
-Give Lex & White customers a reason to choose your brand through a useful discount, special offer, bundle or other genuine benefit.
+<main class="page">
+  <div class="back-strip"><a href="/">← Back to Lex &amp; White Studios</a></div>
 
-◎
-Long-term campaigns
-As our customer base grows, selected partners may also take part in featured campaigns, launches and promotional opportunities.
+  <section class="hero">
+    <span class="eyebrow">Partner With Lex &amp; White Studios</span>
+    <h1>Build useful customer benefits with an Australian software company.</h1>
+    <p class="lead">
+      Lex &amp; White Studios develops privacy, productivity and practical consumer software.
+      We are selecting a small number of foundation partners whose products and services genuinely fit our customers.
+    </p>
+    <div class="actions">
+      <a class="btn" href="mailto:support@lexandwhitestudios.com?subject=Lex%20%26%20White%20Partnership%20Enquiry">Discuss a Partnership</a>
+      <a class="btn secondary" href="/">Back to Home</a>
+      <a class="btn secondary" href="/benefits/">View Member Benefits</a>
+    </div>
+  </section>
 
-Partnership options
-We do not expect every company to use the same model. We can start with whichever arrangement fits the partner's existing systems and commercial structure.
+  <section class="section">
+    <div class="section-title">
+      <h2>What we’re building</h2>
+      <p>Member Benefits will connect customers using Lex &amp; White products with a small number of selected partner offers.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="icon">↗</div><h3>Qualified referrals</h3><p>Send interested customers to an approved landing page, store or campaign using agreed tracking.</p></article>
+      <article class="card"><div class="icon">★</div><h3>Real member value</h3><p>Give customers a useful discount, special offer, bundle or other genuine reason to choose your brand.</p></article>
+      <article class="card"><div class="icon">◎</div><h3>Long-term opportunities</h3><p>Selected partners may later take part in featured campaigns, launches and promotional activity.</p></article>
+    </div>
+  </section>
 
-Member Discount Partner
-Provide a selected discount, free-shipping offer, bundle or other benefit available to eligible Lex & White customers.
+  <section class="section">
+    <div class="section-title">
+      <h2>Partnership options</h2>
+      <p>We can begin with whichever arrangement fits the partner’s existing commercial structure.</p>
+    </div>
+    <div class="grid two">
+      <article class="card"><div class="status">Option A</div><h3>Member Discount Partner</h3><p>Provide a selected discount, free-shipping offer, bundle or other useful customer benefit.</p></article>
+      <article class="card"><div class="status">Option B</div><h3>Affiliate Partner</h3><p>Lex &amp; White refers customers through an approved tracked link and receives commission on qualifying purchases.</p></article>
+      <article class="card"><div class="status">Option C</div><h3>Featured Partner</h3><p>Receive additional placement within the Member Benefits area or agreed Lex &amp; White communications.</p></article>
+      <article class="card"><div class="status">Option D</div><h3>Promotional Partner</h3><p>Work together on a launch, member promotion, sponsored prize or other agreed campaign.</p></article>
+    </div>
+  </section>
 
-Affiliate Partner
-Lex & White refers customers through an approved tracked link or campaign, and receives commission on qualifying purchases.
+  <section class="section">
+    <div class="section-title">
+      <h2>A simple commercial relationship</h2>
+      <p>The partner stays in control of its product and customer transaction. Lex &amp; White focuses on discovery and referral.</p>
+    </div>
+    <div class="grid two">
+      <article class="card">
+        <h3>What partners can receive</h3>
+        <ul class="list">
+          <li>Website exposure within Member Benefits.</li>
+          <li>Tracked customer referrals where supported.</li>
+          <li>Potential placement within selected Lex &amp; White software.</li>
+          <li>Future joint campaign opportunities as our customer base grows.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>What we do not need from partners</h3>
+        <ul class="list">
+          <li>We do not need to hold your inventory.</li>
+          <li>We do not need to process your customer payments.</li>
+          <li>We do not take over your warranty or product support.</li>
+          <li>We do not need private browsing history.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 
-Featured Partner
-A selected partner may receive additional placement within the Member Benefits area or agreed Lex & White communications.
+  <section class="callout">
+    <h2>We’re selecting foundation partners</h2>
+    <p>
+      We are at the early stage of building our customer base and will be straightforward about that.
+      We would rather establish a small number of credible long-term partnerships and grow the program with them.
+    </p>
+    <div class="actions">
+      <a class="btn" href="mailto:support@lexandwhitestudios.com?subject=Lex%20%26%20White%20Foundation%20Partner%20Enquiry">Contact Lex &amp; White Studios</a>
+    </div>
+  </section>
 
-Promotional Partner
-Work together on a specific launch, member promotion, sponsored prize or campaign, with the arrangement agreed before publication.
+  <div class="disclosure">
+    <strong>Our approach:</strong> Partner offers will be presented clearly. If Lex &amp; White Studios may receive a commission,
+    customers will be told in plain English. Private browsing activity will not be used to target partner offers.
+  </div>
+</main>
 
-What partners receive
-Our goal is a simple relationship: the partner keeps control of its product and customer transaction, while Lex & White helps introduce relevant customers.
-
-Partner-side benefits
-Website exposure within the Member Benefits program.
-Tracked customer referrals where the partner supports them.
-Potential placement within selected Lex & White software.
-Future joint campaign opportunities as our customer base grows.
-What Lex & White does not need
-We do not need to hold the partner's inventory.
-We do not need to process the partner's customer payment.
-We do not need to take over the partner's warranty or product support.
-We do not need access to private customer browsing history.
-Foundation partners
-We are at the early stage of building our customer base and we will be straightforward about that. Rather than collecting a large number of low-value affiliate links, we want to establish a small group of credible long-term foundation partners and grow the program alongside them.
-
-Contact Lex & White Studios
-Our approach: Partner offers will be presented clearly. If Lex & White Studios may receive a commission from an offer, customers will be told in plain English. We will not use private browsing activity to target partner offers.
-About Us Contact Support Member Benefits Partner With Us Refund Policy Privacy Policy Terms of Service Disclaimer
-© 2026 Lex & White Studios Pty Ltd
-
-support@lexandwhitestudios.com · +61 484 851 270
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a>
+    <a href="/support.html">Support</a><a href="/benefits/">Member Benefits</a>
+    <a href="/partners/">Partner With Us</a><a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms-of-service.html">Terms of Service</a>
+  </div>
+  <p class="copyright">© 2026 Lex &amp; White Studios Pty Ltd</p>
+  <p class="copyright">support@lexandwhitestudios.com · +61 484 851 270</p>
+</footer>
+</body>
+</html>
