@@ -1,66 +1,385 @@
-LEX & WHITE STUDIOS
-Home Member Benefits Partners Suspension Guide Support
-Lex & White Member Benefits
-Useful offers. Selected for people who use technology every day.
-We are building a member benefits program around products and services that make sense alongside Lex & White software. Our aim is simple: useful savings and special offers, without filling our apps with advertising.
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Member Benefits | Lex &amp; White Studios</title>
+<meta name="description" content="Lex & White Member Benefits connects customers with selected offers from technology and consumer brands.">
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
 
-See What We’re Building Become a Partner
-Benefit categories
-We are starting with a small number of useful technology-focused categories. Real partner offers will appear here only after they are approved and active.
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(124,58,237,.18),transparent 34%),
+    #07070d;
+  color:#f4f4f8;
+  min-height:100vh;
+}
+a{color:inherit}
+.site-header{
+  width:100%;
+  min-height:72px;
+  padding:18px 42px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:26px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(8,8,14,.94);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.brand-link{
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:1.4px;
+  font-size:13px;
+  white-space:nowrap;
+}
+.site-header nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:20px;
+}
+.site-header nav a{
+  color:#c3c5d1;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+}
+.site-header nav a:hover,
+.site-header nav a.active{color:#fff}
+.page{
+  width:min(1160px,calc(100% - 36px));
+  margin:0 auto;
+  padding:56px 0 76px;
+}
+.hero{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  padding:58px 46px;
+  background:
+    radial-gradient(circle at 14% 4%,rgba(124,58,237,.28),transparent 35%),
+    radial-gradient(circle at 88% 8%,rgba(51,93,235,.18),transparent 32%),
+    rgba(16,15,25,.96);
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:280px;height:280px;
+  border-radius:50%;
+  right:-110px;bottom:-150px;
+  background:rgba(124,58,237,.09);
+  filter:blur(2px);
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid rgba(124,58,237,.55);
+  background:rgba(124,58,237,.13);
+  color:#d7cbff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.hero h1{
+  max-width:850px;
+  margin:20px 0 0;
+  font-size:clamp(38px,5.8vw,64px);
+  line-height:1.03;
+  letter-spacing:-.035em;
+}
+.lead{
+  max-width:790px;
+  margin:22px 0 0;
+  color:#b9bdcf;
+  line-height:1.72;
+  font-size:18px;
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:12px;
+  border:1px solid rgba(124,58,237,.62);
+  background:linear-gradient(135deg,#8a27ff,#5538f0);
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(87,40,210,.22);
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.secondary{
+  background:rgba(255,255,255,.045);
+  border-color:rgba(255,255,255,.15);
+  box-shadow:none;
+}
+.section{margin-top:64px}
+.section-title{max-width:780px;margin-bottom:24px}
+.section-title h2{
+  margin:0 0 9px;
+  font-size:clamp(27px,4vw,38px);
+  letter-spacing:-.02em;
+}
+.section-title p{margin:0;color:#a9aec2;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  padding:24px;
+  min-height:100%;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.025));
+  box-shadow:0 16px 44px rgba(0,0,0,.13);
+}
+.card:hover{border-color:rgba(124,58,237,.32)}
+.icon{
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  margin-bottom:18px;
+  border-radius:12px;
+  border:1px solid rgba(124,58,237,.42);
+  background:rgba(124,58,237,.11);
+  color:#cbbcff;
+  font-weight:900;
+  font-size:16px;
+}
+.card h3{margin:0 0 10px;font-size:19px}
+.card p{margin:0;color:#aeb3c6;line-height:1.65}
+.status{
+  display:inline-flex;
+  width:fit-content;
+  margin:0 0 14px;
+  padding:5px 9px;
+  border:1px solid rgba(51,93,235,.43);
+  border-radius:999px;
+  background:rgba(51,93,235,.11);
+  color:#b9c8ff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.list{
+  display:grid;
+  gap:12px;
+  margin:16px 0 0;
+  padding:0;
+  list-style:none;
+}
+.list li{
+  position:relative;
+  padding-left:25px;
+  color:#c0c4d4;
+  line-height:1.55;
+}
+.list li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#9caeff;
+  font-weight:900;
+}
+.callout{
+  margin-top:64px;
+  padding:32px;
+  border:1px solid rgba(124,58,237,.30);
+  border-radius:20px;
+  background:
+    linear-gradient(135deg,rgba(124,58,237,.11),rgba(51,93,235,.055)),
+    rgba(255,255,255,.02);
+}
+.callout h2{margin:0 0 10px;font-size:29px}
+.callout p{max-width:850px;margin:0;color:#b4b8ca;line-height:1.7}
+.disclosure{
+  margin-top:32px;
+  padding:18px 20px;
+  border-left:3px solid #7c3aed;
+  background:rgba(255,255,255,.026);
+  color:#9fa4b8;
+  font-size:13px;
+  line-height:1.65;
+}
+.site-footer{
+  padding:28px 36px 34px;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:#09090f;
+  text-align:center;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:17px;
+  margin-bottom:14px;
+}
+.footer-links a{
+  color:#aeb2c3;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+}
+.footer-links a:hover{color:#fff}
+.copyright{margin:7px 0;color:#777d92;font-size:12px}
+.back-strip{
+  margin-bottom:14px;
+}
+.back-strip a{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#aeb4cb;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+.back-strip a:hover{color:#fff}
+@media(max-width:900px){
+  .site-header{padding:16px 20px;align-items:flex-start}
+  .site-header nav{gap:12px}
+  .grid,.grid.two{grid-template-columns:1fr}
+  .hero{padding:40px 26px}
+  .page{padding-top:34px}
+}
+@media(max-width:670px){
+  .site-header{flex-direction:column}
+  .site-header nav{justify-content:flex-start}
+  .actions{flex-direction:column}
+  .btn{width:100%}
+  .page{width:min(100% - 24px,1160px)}
+}
+</style>
 
-🛡
-Foundation partners being selected
-Security & Privacy
-Security software and services that can help customers protect their computers, accounts and personal information.
+</head>
+<body>
+<header class="site-header">
+  <a class="brand-link" href="/">LEX &amp; WHITE STUDIOS</a>
+  <nav>
+    <a href="/">Home</a>
+    <a class="active" href="/benefits/">Member Benefits</a>
+    <a href="/partners/">Partners</a>
+    <a href="/suspension-setup-guide/">Suspension Guide</a>
+    <a href="/support.html">Support</a>
+  </nav>
+</header>
 
-⌨
-Foundation partners being selected
-PCs & Peripherals
-Computers, keyboards, mice, webcams, headsets, monitors and other everyday hardware from selected retailers and brands.
+<main class="page">
+  <div class="back-strip"><a href="/">← Back to Lex &amp; White Studios</a></div>
 
-☁
-Foundation partners being selected
-Software & Backup
-Practical software, storage and backup services that help people work, protect files and keep their devices useful.
+  <section class="hero">
+    <span class="eyebrow">Lex &amp; White Member Benefits</span>
+    <h1>Useful benefits for people who use technology every day.</h1>
+    <p class="lead">
+      We are building a member benefits program around products and services that make sense
+      alongside Lex &amp; White software. The aim is simple: useful savings and special offers,
+      without filling our apps with advertising.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#categories">Explore Benefits</a>
+      <a class="btn secondary" href="/">Back to Home</a>
+      <a class="btn secondary" href="/partners/">Partner With Us</a>
+    </div>
+  </section>
 
-🎮
-Planned
-Gaming
-Gaming hardware, accessories and selected offers that are genuinely useful to PC and console players.
+  <section class="section" id="categories">
+    <div class="section-title">
+      <h2>What we’re building</h2>
+      <p>Real partner offers will appear here only after they have been approved and are active.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">01</div><div class="status">Foundation partners being selected</div>
+        <h3>Security &amp; Privacy</h3>
+        <p>Security products and services that help protect computers, accounts and personal information.</p>
+      </article>
+      <article class="card">
+        <div class="icon">02</div><div class="status">Foundation partners being selected</div>
+        <h3>PCs &amp; Peripherals</h3>
+        <p>Computers, keyboards, mice, webcams, headsets, monitors and other useful everyday hardware.</p>
+      </article>
+      <article class="card">
+        <div class="icon">03</div><div class="status">Foundation partners being selected</div>
+        <h3>Software &amp; Backup</h3>
+        <p>Practical software, storage and backup services that help people work and protect their files.</p>
+      </article>
+      <article class="card">
+        <div class="icon">04</div><div class="status">Planned</div>
+        <h3>Gaming</h3>
+        <p>Gaming hardware, accessories and selected offers that are genuinely useful to PC and console players.</p>
+      </article>
+      <article class="card">
+        <div class="icon">05</div><div class="status">Planned</div>
+        <h3>Storage &amp; Upgrades</h3>
+        <p>Drives, memory and practical computer upgrades from selected brands and retailers.</p>
+      </article>
+      <article class="card">
+        <div class="icon">06</div><div class="status">Later</div>
+        <h3>More Useful Benefits</h3>
+        <p>We would rather add a few genuinely useful offers than hundreds of benefits nobody actually wants.</p>
+      </article>
+    </div>
+  </section>
 
-💾
-Planned
-Storage & Upgrades
-Drives, memory and practical computer upgrades from brands and retailers that fit the Lex & White customer base.
+  <section class="section">
+    <div class="section-title">
+      <h2>How Member Benefits will work</h2>
+      <p>Lex &amp; White helps you discover an offer. The partner remains responsible for the product or service you buy.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="icon">1</div><h3>See an approved offer</h3><p>Offers are shown clearly in the Member Benefits area.</p></article>
+      <article class="card"><div class="icon">2</div><h3>Choose to open it</h3><p>You decide whether to visit the partner. We do not inject partner adverts into normal webpages.</p></article>
+      <article class="card"><div class="icon">3</div><h3>Buy from the partner</h3><p>The partner handles payment, delivery, warranty, returns, licensing and product support.</p></article>
+    </div>
+  </section>
 
-＋
-Later
-More Useful Benefits
-We may expand into other areas over time, but only when an offer provides clear value. We would rather have a few good benefits than hundreds of useless ones.
+  <section class="callout">
+    <h2>No browsing-history targeting</h2>
+    <p>Member Benefits is being designed as a separate service. Your private browsing history is not needed to decide which partner offers to show.</p>
+    <ul class="list">
+      <li>Offers are selected by category, region and availability.</li>
+      <li>You choose whether to open a partner offer.</li>
+      <li>Partner analytics will remain separate from normal browsing history.</li>
+    </ul>
+  </section>
 
-How it will work
-Lex & White helps you discover the offer. The partner remains responsible for the product or service you buy.
+  <div class="disclosure">
+    <strong>Affiliate disclosure:</strong> Lex &amp; White Studios may receive a commission when a purchase
+    is made through selected partner links. This does not increase the price you pay. Offers and availability may change.
+  </div>
+</main>
 
-1
-See an approved benefit
-Offers will be shown clearly on this page and, later, in a dedicated Member Benefits area inside selected Lex & White products.
-
-2
-Open the partner offer
-You choose whether to view an offer. We do not inject partner advertising into the websites you browse.
-
-3
-Buy from the partner
-The partner handles the transaction, delivery, warranty, returns, licensing and product support unless an offer clearly says otherwise.
-
-No browsing-history targeting
-Member Benefits is being designed as a separate service. We do not need your private browsing history to decide which partner offers to show you.
-
-Offers are chosen by category, region and availability.
-You decide whether to open a partner offer.
-We will keep partner analytics separate from normal browsing history.
-Affiliate disclosure: Lex & White Studios may receive a commission when a purchase is made through selected partner links. This does not increase the price you pay. Offers, eligibility and availability may change or end at any time.
-About Us Contact Support Member Benefits Partner With Us Refund Policy Privacy Policy Terms of Service Disclaimer
-© 2026 Lex & White Studios Pty Ltd
-
-support@lexandwhitestudios.com · +61 484 851 270
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/about.html">About Us</a><a href="/contact.html">Contact</a>
+    <a href="/support.html">Support</a><a href="/benefits/">Member Benefits</a>
+    <a href="/partners/">Partner With Us</a><a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms-of-service.html">Terms of Service</a>
+  </div>
+  <p class="copyright">© 2026 Lex &amp; White Studios Pty Ltd</p>
+  <p class="copyright">support@lexandwhitestudios.com · +61 484 851 270</p>
+</footer>
+</body>
+</html>
