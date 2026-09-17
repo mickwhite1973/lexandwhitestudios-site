@@ -385,26 +385,22 @@ main {
     }
 }
 
-    .site-header nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 
-    main {
-        width: min(100% - 32px, 1120px);
-        padding-top: 48px;
-    }
+/* Web Privacy Pro official product logo */
+.product-title {
+    margin: 18px 0 18px;
+    line-height: 1;
+}
 
-    .features {
-        grid-template-columns: 1fr;
-    }
+.product-logo {
+    display: block;
+    width: min(360px, 78vw);
+    height: auto;
+    margin: 0 auto;
+}
 
-    .hero h1 {
-        font-size: 44px;
-    }
-
-    .download-btn {
-        width: 100%;
-        max-width: 340px;
+@media (max-width: 640px) {
+    .product-logo {
+        width: min(300px, 84vw);
     }
 }
