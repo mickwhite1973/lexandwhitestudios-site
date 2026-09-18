@@ -1,0 +1,11 @@
+/* =========================================================
+   APPS PAGE - PAGE SPECIFIC STYLES
+   ========================================================= */
+
+
+/* Give each product card clear breathing room */
+
+.apps-product-grid {
+    display: grid;
+    gap: 28px;
+}
