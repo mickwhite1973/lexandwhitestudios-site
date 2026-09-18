@@ -290,6 +290,21 @@
     object-fit: cover;
 }
 
+.screenshot-frame a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+}
+
+.screenshot-frame a img {
+    transition: transform 0.18s ease;
+}
+
+.screenshot-frame a:hover img {
+    transform: scale(1.01);
+}
+
 .screenshot-placeholder {
     color: #686f83;
 
