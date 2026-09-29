@@ -1,0 +1,13 @@
+/* WPP-only visual layout. Functional checkout lives in the original pages. */
+.product-opening { padding-top: 0; background: linear-gradient(#0A0F1A 0 28%, #F7F8FA 28% 100%); }
+.product-opening .product-image { max-width: 1120px; margin: auto; }
+.product-opening img { box-shadow: 0 30px 75px #0a0f1a20; }
+.purchase { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.purchase h2 { font-size: clamp(50px, 6vw, 80px); }
+.purchase p:not(.eyebrow):not(.lead) { color: #b6c5d8; max-width: 470px; }
+.purchase-actions { margin-top: 0; }
+.purchase .text-link { margin-top: 18px; }
+@media (max-width: 760px) {
+  .purchase { grid-template-columns: 1fr; gap: 32px; }
+  .product-opening { padding-bottom: 50px; }
+}
