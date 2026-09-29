@@ -9,3 +9,18 @@
 @media(max-width:760px){.entrance{padding-bottom:130px}.identity{width:94vw}.horizon{margin-bottom:0}.wordmark{font-size:clamp(25px,6.1vw,44px);letter-spacing:.18em;padding-left:.18em}.tagline{margin-top:28px;font-size:10px;letter-spacing:.33em}.studio-header{padding:25px 24px;align-items:flex-start;flex-direction:column;gap:22px}.studio-header nav{width:100%;justify-content:space-between;gap:14px}.studio-content{padding:66px 24px 50px}.introduction{font-size:16px;margin-bottom:45px}.destinations{grid-template-columns:repeat(2,1fr);gap:20px}.destination h3{font-size:26px}.destination p{font-size:13px}.destination{padding-bottom:20px}.wide-only{display:none}footer{padding:0 24px 28px}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}footer nav{gap:20px}.enter{bottom:10%}}
 @media(max-height:500px) and (orientation:landscape){.entrance{min-height:540px}.identity{width:550px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Align the studio masthead/footer with the wider Horizon site.
+   The approved entrance, animation and destination layout are unchanged. */
+.small-brand{display:inline-flex;align-items:center;gap:14px}
+.home-brand-mark{width:58px;height:36px;flex-shrink:0;color:#17689f}
+.small-brand .home-brand-text{font:inherit;letter-spacing:inherit}
+.small-brand .home-brand-text>span{display:block;font-size:9px;letter-spacing:.38em}
+.studio-header nav a{display:inline-flex;align-items:center;min-width:44px;min-height:44px}
+.studio footer{max-width:none;background:#0A0F1A;color:#E6EAF0;padding:44px max(48px,calc((100% - 1184px)/2)) 26px}
+.studio .footer-top{border-top:0;padding-top:0}
+.studio .footer-top p span,.studio footer nav,.studio .footer-bottom{color:#b6c5d8}
+.studio .footer-bottom{border-color:#344154}
+.studio footer nav a{display:inline-flex;align-items:center;min-height:44px}
+.studio footer a:focus-visible{outline-color:#3EA6FF}
+@media(max-width:760px){.studio footer{padding:36px 24px 24px}}
