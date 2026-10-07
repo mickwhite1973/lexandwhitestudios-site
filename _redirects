@@ -1,3 +1,6 @@
 /download /download/windows/latest 302
 /download/windows /download/windows/latest 302
 /download/windows/latest https://download.lexandwhitestudios.com/windows/v2.0.10.0/WebStudio.Package_2.0.10.0_x64.msix 302
+
+/lexdesk/download /lexdesk/download/windows/latest 302
+/lexdesk/download/windows/latest https://download.lexandwhitestudios.com/lexdesk/windows/v1.0.2.0/WebStudio.Package.Direct_1.0.2.0_x64.msix 302
